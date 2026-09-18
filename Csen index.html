@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Csen 的英语复习站</title>
+<style>
+  :root{
+    --bg:#f7f4ef; --card:#ffffff; --ink:#2b2620; --sub:#8a8177;
+    --accent:#c25e3a; --accent-soft:#f6e3da; --line:#e9e2d8;
+    --green:#5b7f5b; --radius:16px;
+    --shadow:0 2px 10px rgba(60,45,30,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:"PingFang SC","Microsoft YaHei",-apple-system,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.75;}
+  .wrap{max-width:920px;margin:0 auto;padding:0 20px;}
+
+  header{background:linear-gradient(135deg,#fff 0%,var(--accent-soft) 100%);
+    border-bottom:1px solid var(--line); padding:36px 0 0;}
+  .tag{display:inline-block;background:var(--accent);color:#fff;font-size:12px;
+    padding:3px 12px;border-radius:99px;letter-spacing:2px;margin-bottom:12px;}
+  h1{font-size:28px;letter-spacing:1px;}
+  .sub{color:var(--sub);margin-top:6px;font-size:14px;padding-bottom:20px;}
+
+  .tabs{display:flex;gap:8px;}
+  .tab{padding:10px 22px;border:none;background:transparent;font-size:15px;
+    color:var(--sub);cursor:pointer;border-radius:12px 12px 0 0;font-weight:600;}
+  .tab.active{background:var(--bg);color:var(--accent);}
+  .tab:hover{color:var(--accent);}
+
+  .toolbar{display:flex;gap:10px;margin:24px 0 18px;flex-wrap:wrap;align-items:center;}
+  .search{flex:1;min-width:180px;padding:11px 16px;border:1px solid var(--line);
+    border-radius:99px;font-size:14px;background:#fff;outline:none;}
+  .search:focus{border-color:var(--accent);}
+  .btn{padding:11px 18px;border:none;border-radius:99px;background:var(--ink);
+    color:#fff;font-size:13px;cursor:pointer;}
+  .btn:hover{background:var(--accent);}
+  .btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line);}
+
+  .lesson-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px 22px;margin-bottom:14px;cursor:pointer;box-shadow:var(--shadow);
+    transition:transform .15s;display:flex;gap:16px;align-items:center;}
+  .lesson-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(60,45,30,.10);}
+  .num{flex:none;width:52px;height:52px;border-radius:14px;background:var(--accent-soft);
+    color:var(--accent);font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center;}
+  .card-title{font-size:17px;font-weight:600;}
+  .card-meta{color:var(--sub);font-size:13px;margin-top:3px;}
+  .done-dot{color:var(--green);font-size:13px;font-weight:700;display:none;margin-left:8px;}
+  .lesson-card.reviewed .done-dot{display:inline;}
+  .arrow{color:var(--sub);font-size:20px;flex:none;margin-left:auto;}
+  .empty{text-align:center;color:var(--sub);padding:60px 0;display:none;}
+
+  .detail{display:none;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:34px 38px;box-shadow:var(--shadow);margin-bottom:40px;}
+  .detail.show{display:block;animation:fade .25s;}
+  @keyframes fade{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  .back{border:none;background:none;color:var(--accent);cursor:pointer;font-size:14px;margin-bottom:16px;padding:0;}
+  .d-title{font-size:24px;margin-bottom:4px;}
+  .d-meta{color:var(--sub);font-size:13px;margin-bottom:14px;}
+  .review-btn{margin-bottom:22px;padding:8px 18px;border-radius:99px;border:1px solid var(--line);
+    background:#fff;font-size:13px;cursor:pointer;color:var(--sub);}
+  .review-btn.on{background:var(--green);border-color:var(--green);color:#fff;font-weight:600;}
+  .d-section{margin-bottom:26px;}
+  .d-section h3{font-size:16px;color:var(--accent);margin-bottom:10px;
+    border-left:4px solid var(--accent);padding-left:10px;}
+  .d-section ul,.d-section ol{padding-left:22px;}
+  .d-section li{margin-bottom:8px;}
+  .en{color:var(--green);font-weight:600;}
+  .tip{background:var(--accent-soft);border-radius:12px;padding:14px 18px;font-size:14px;margin-top:8px;}
+  .dialog{background:#fbf9f5;border:1px dashed var(--line);border-radius:12px;padding:14px 18px;font-size:14px;margin-top:8px;}
+  .dialog p{margin-bottom:6px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;}
+  .dialog .who{color:var(--accent);font-weight:600;flex:none;}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px;}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top;}
+  th{background:#faf6f0;}
+  .homework{background:#eef4ee;border-radius:12px;padding:14px 18px;font-size:14px;}
+
+  .speak{border:1px solid var(--line);background:#fff;border-radius:99px;padding:2px 10px;
+    font-size:12px;color:var(--accent);cursor:pointer;flex:none;line-height:1.6;}
+  .speak:hover{background:var(--accent);color:#fff;}
+  .speak.on{background:var(--accent);color:#fff;}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;margin-bottom:40px;}
+  .flip{perspective:900px;height:175px;cursor:pointer;}
+  .flip-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d;}
+  .flip.flipped .flip-inner{transform:rotateY(180deg);}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius);
+    border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;text-align:center;}
+  .face.back{transform:rotateY(180deg);background:#fbf7f2;}
+  .word{font-size:22px;font-weight:700;color:var(--ink);}
+  .phon{color:var(--sub);font-size:13px;}
+  .meaning{font-size:15px;color:var(--green);font-weight:600;}
+  .example{font-size:12.5px;color:var(--sub);line-height:1.5;}
+  .flip-hint{font-size:11px;color:var(--sub);}
+
+  .modal-mask{display:none;position:fixed;inset:0;background:rgba(40,30,20,.45);z-index:50;}
+  .modal-mask.show{display:flex;align-items:center;justify-content:center;}
+  .modal{background:#fff;border-radius:18px;max-width:600px;width:92%;max-height:85vh;overflow:auto;padding:28px 30px;}
+  .modal h2{font-size:19px;margin-bottom:14px;}
+  .modal label{font-size:13px;color:var(--sub);display:block;margin:12px 0 4px;}
+  .modal select,.modal input[type=range]{width:100%;padding:8px;border:1px solid var(--line);border-radius:10px;font-size:14px;}
+  .modal ol{padding-left:22px;font-size:14px;}
+  .modal li{margin-bottom:8px;}
+  pre{background:#2b2620;color:#f0ead9;padding:16px;border-radius:12px;font-size:12.5px;overflow:auto;line-height:1.6;margin:12px 0;}
+  .voice-status{font-size:12px;color:var(--sub);margin-top:6px;}
+
+  footer{color:var(--sub);font-size:12px;text-align:center;padding:26px 0 40px;}
+  @media(max-width:640px){.detail{padding:24px 20px;}h1{font-size:23px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <span class="tag">ENGLISH REVIEW</span>
+    <h1>Csen 的英语复习站</h1>
+    <p class="sub">Mike 老师课后笔记 + 单词卡 · 点击 🔊 听发音 · 点开即可复习</p>
+    <nav class="tabs">
+      <button class="tab active" id="tab-lessons" onclick="switchTab('lessons')">📒 课程笔记</button>
+      <button class="tab" id="tab-words" onclick="switchTab('words')">🃏 单词卡</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="page-lessons">
+    <div class="toolbar">
+      <input class="search" id="search" type="text" placeholder="搜索课程关键词，如：婚礼 / 峨眉山 / 情绪…">
+      <button class="btn ghost" onclick="testVoice()">🔊 试听声音</button>
+      <button class="btn ghost" onclick="openVoiceSettings()">⚙ 声音设置</button>
+      <button class="btn" onclick="openHelp()">＋ 添加课程教程</button>
+    </div>
+    <div id="list"></div>
+    <div class="empty" id="empty">没有找到相关课程</div>
+    <article class="detail" id="detail"></article>
+  </section>
+
+  <section id="page-words" style="display:none">
+    <div class="toolbar">
+      <span style="font-size:13px;color:var(--sub)">点击卡片翻面 · 点 🔊 听发音</span>
+      <button class="btn ghost" onclick="shuffleWords()">🔀 随机洗牌</button>
+      <button class="btn ghost" onclick="openVoiceSettings()">⚙ 声音设置</button>
+    </div>
+    <div class="cards" id="cards"></div>
+  </section>
+</main>
+
+<footer>Csen English Review · 声音与复习进度保存在本机浏览器</footer>
+
+<!-- 声音设置弹窗 -->
+<div class="modal-mask" id="voiceMask">
+  <div class="modal">
+    <h2>🔊 声音设置</h2>
+    <p style="font-size:13px;color:var(--sub)">发音使用浏览器内置语音引擎（免费、无需联网下载），不同设备可选的声音不同。列表里标 💃 的是女声，推荐选择。</p>
+    <label>选择声音（推荐女声）</label>
+    <select id="voiceSelect" onchange="saveVoice()"><option value="">加载中…</option></select>
+    <div class="voice-status" id="voiceStatus"></div>
+    <label>语速：<span id="rateVal">0.9</span></label>
+    <input type="range" id="rate" min="0.5" max="1.2" step="0.1" value="0.9" oninput="document.getElementById('rateVal').textContent=this.value;saveVoice();">
+    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn" onclick="testVoice()">试听 Hello, Csen!</button>
+      <button class="btn ghost" onclick="document.getElementById('voiceMask').classList.remove('show')">关闭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 更新指南弹窗 -->
+<div class="modal-mask" id="mask" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="modal">
+    <h2>如何更新网站内容？</h2>
+    <p style="font-size:14px;margin-bottom:10px;"><b>① 添加一节新课：</b>打开 index.html，搜索定位到 <b>★★★ 新课程粘贴在这一行的上方 ★★★</b>，复制一节模板粘贴到上方，改内容保存即可（新课会显示在列表最顶部）：</p>
+    <pre>{
+  id: 11,
+  date: "2026-09-19",
+  title: "第十一课：标题",
+  subtitle: "Mike 老师 · 口语实战",
+  intro: "本课一句话总结。",
+  sections: [
+    { h: "一、核心句型", type: "list", items: [
+      "&lt;span class='en'&gt;English sentence.&lt;/span&gt; 中文。" ] },
+    { h: "二、中英对照", type: "table", head: ["中文","英文"], rows: [
+      ["中文句子","&lt;span class='en'&gt;English sentence.&lt;/span&gt;"] ] },
+    { h: "课后作业", type: "homework", text: "复述并录音。" }
+  ]
+}</pre>
+    <p style="font-size:14px;margin-bottom:10px;"><b>板块类型说明：</b><code>list</code> 要点列表（英文放 &lt;span class='en'&gt; 里会自动出现 🔊 按钮）／<code>table</code> 中英对照表／<code>dialog</code> 对话／<code>tip</code> 老师提醒／<code>homework</code> 作业。</p>
+    <p style="font-size:14px;margin-bottom:10px;"><b>② 添加单词：</b>在 <b>WORDS</b> 数据区同样格式加一行：</p>
+    <pre>{ w:"browse", p:"/braʊz/", m:"v. 浏览", e:"Browse Safari and you will see more." }</pre>
+    <p style="font-size:13px;color:var(--sub);margin-bottom:10px;"><b>③ 想用真人录音/mp3？</b>把 mp3 文件放在网站文件夹的 audio/ 里，然后在数据里加 <code>audio:"audio/xxx.mp3"</code>，网站会优先播放 mp3，没有就自动用内置语音。</p>
+    <button class="btn" onclick="document.getElementById('mask').classList.remove('show')">知道了</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   ★ 课程数据区 ★  新课粘贴到数组最前面（列表顶部）
+   sections 的 type：list 知识点列表 / table 中英对照表
+              dialog 对话 / tip 老师提醒 / homework 作业
+   ============================================================ */
+const LESSONS = [
+{
+  id: 10,
+  date: "2026-09-17",
+  title: "第十课：Puma 课文 · 情绪表达 · 峨眉山段落",
+  subtitle: "Mike 老师 · 口语实战",
+  intro: "课前从腰疼聊到粤语；Puma 课文练流利度；背熟 15 个情绪句；复习时间数据表达；最后用峨眉山整段做口语输出。",
+  sections: [
+    { h: "一、课前交流：身体 & 粤语", type: "list", items: [
+      "腰疼：<span class='en'>My waist hurts / My lower back hurts because I sit too long every day.</span>（腰 = waist / lower back；疼 = hurt）",
+      "粤语 = <span class='en'>Cantonese</span>；广东 <span class='en'>Guangdong province</span>；广州 <span class='en'>Guangzhou</span>；中山 <span class='en'>Zhongshan</span>（孙中山的故乡）",
+      "知识点：粤语的<b>语法和普通话基本相同</b>，只是发音和用词不同；最标准的是广州话；香港粤语常夹杂英语单词。",
+      "课堂彩蛋：靓仔（帅哥）、扑街（口语感叹词，慎用）。"
+    ]},
+    { h: "二、Puma 课文（流利度训练）", type: "tip", text: "课文讲「一只美洲狮出逃后出现在伦敦附近」的故事，难度约大学英语六级。训练法：先看中文大意 → 整段朗读 → 有节奏地一口气读完；生词不会读直接跳过，不要逐词卡壳，流利度优先。" },
+    { h: "课文大意（中文）", type: "list", items: [
+      "伦敦动物园接到报告：伦敦以南发现一只野生美洲狮。起初专家们不当真，随着目击报告不断增多，专家不得不展开调查，目击者的描述出奇地相似。",
+      "搜寻始于一个小村庄：一位采黑莓的女士看见一只大猫离她只有五码远。专家表示，美洲狮除非被激怒，否则不会攻击人。",
+      "搜寻很困难：它常常早上在一个地方出现，晚上却出现在二十英里外的另一个地方；沿途留下踪迹——小鸡等小动物被抓走、树上有爪痕、夜里有人听到类似猫叫的声音、一位商人还看见美洲狮在树上。",
+      "全国没有任何动物园报告丢失美洲狮，它一定是某位私人收藏家养的，不知怎的逃了出来。搜寻持续数周仍未能捕获——一想到危险的野兽仍在宁静的乡村出没，就叫人不安。",
+      "老师提醒：下节课会把课文难度适当降低，先保住「每天朗读」的习惯。"
+    ]},
+    { h: "三、情绪表达 15 句（必背）", type: "table", head: ["中文","英文"], rows: [
+      ["太激动了","<span class='en'>I'm so excited.</span>"],
+      ["总算松了一口气","<span class='en'>I'm very relieved.</span>"],
+      ["太棒了","<span class='en'>That's fantastic.</span>"],
+      ["听到这个我很高兴","<span class='en'>I'm delighted to hear that.</span>"],
+      ["我感觉很幸运","<span class='en'>I feel so lucky.</span>"],
+      ["这让我开心了一整天","<span class='en'>That makes my day.</span>"],
+      ["我非常感激","<span class='en'>I'm very grateful.</span>"],
+      ["我有点郁闷","<span class='en'>I'm a bit upset.</span>"],
+      ["太让人沮丧了","<span class='en'>That's so frustrating.</span>"],
+      ["我真的很恼火","<span class='en'>I'm really annoyed.</span>"],
+      ["我压力很大","<span class='en'>I feel so stressed out.</span>"],
+      ["我完全震惊了","<span class='en'>I'm totally shocked.</span>"],
+      ["我很失望","<span class='en'>I'm quite disappointed.</span>"],
+      ["我很焦虑","<span class='en'>I'm feeling anxious.</span>"]
+    ]},
+    { h: "四、时间与数据复习", type: "list", items: [
+      "点外卖想提前：<span class='en'>The take-away will arrive at three o'clock. But can we move up a little bit?</span>（a little bit = 一点点；请求用 Can/Could we + 动词，越简短越地道）",
+      "销量数据句：<span class='en'>The sales of Xiaomi phones was increased by 60% in 2026.</span>",
+      "结构要点：先说主体 <span class='en'>the sales of ...</span>（……的销量）→ 被动 <span class='en'>was increased by + 百分比</span> → 时间（年份用 in）。描述事物要「有逻辑、有顺序」。",
+      "复习上节口诀：at 接「点」，on 接「天」，in 接「年、月、季节」。"
+    ]},
+    { h: "五、峨眉山口语段落（本课核心产出）", type: "tip", text: "中文参考：你好 Mike，今天我想聊聊峨眉山。峨眉山位于四川省，是中国著名的佛教名山，也是很多人周末前来游玩的地方。山里有很多猴子。当游客数量过多时，现场秩序就会变差。因此景区需要提前管控，部分游览班次时间提前。近些年来，游客数量大涨了 10%。不过只要你早起，依然能邂逅静谧的云上日出。这就是我记忆中的峨眉山，谢谢。" },
+    { h: "英文目标版", type: "list", items: [
+      "<span class='en'>Hello Mike. Today I want to talk about Mount Emei. Mount Emei is located in Sichuan Province. It's a famous Buddhist mountain in China, and also a place that a lot of people come to play on the weekend. There are a lot of monkeys on the mountain. When the number of tourists increases, the order will go down. So the scenic area needs to move up control, and part of the visit times. In recent years, the number of tourists has increased by 10%. But if you get up early, you still can see the quiet sunrise above the clouds. This is Mount Emei that I remember. Thank you.</span>"
+    ]},
+    { h: "段落语言点", type: "table", head: ["表达","中文"], rows: [
+      ["<span class='en'>be located in</span>","位于……"],
+      ["<span class='en'>Buddhist mountain</span>","佛教名山"],
+      ["<span class='en'>a place that ...</span>","一个……的地方（定语从句，that 指代 place）"],
+      ["<span class='en'>the number of tourists</span>","游客数量"],
+      ["<span class='en'>the order will go down</span>","秩序会变差"],
+      ["<span class='en'>scenic area</span>","景区"],
+      ["<span class='en'>move up control</span>","提前管控"],
+      ["<span class='en'>in recent years</span>","近些年来"],
+      ["<span class='en'>increase by 10%</span>","上涨了 10%"],
+      ["<span class='en'>the quiet sunrise above the clouds</span>","静谧的云上日出"],
+      ["<span class='en'>This is Mount Emei that I remember.</span>","这就是我记忆中的峨眉山（定语从句收尾）"]
+    ]},
+    { h: "⚠️ 常见卡壳点", type: "tip", text: "① there have → 应该是 there are；② 「不过只要早起」记住 if 条件句结构：But if you get up early, you still can see ... ③ 中文省略的「当……时」英语要补出 when；④ 英语不喜欢重复，前面说过的 move up 后面可省略。" },
+    { h: "课后作业与学习约定", type: "homework", text: "① 峨眉山整段练到流利，录音发给老师（最好第二天上午/中午之前交）；② 每天朗读、背诵指定文章，觉得吃力及时告诉老师调难度；③ 每天留 40 分钟～1 小时给英语，周一到周五按时交作业、周末休息；④ 下次上课：周六晚 9:30。课程整体规划 24 节，难度逐步上升，接下来重点融入定语从句、百分比等实用表达。" }
+  ]
+},
+{
+  id: 9,
+  date: "2026-09-15",
+  title: "第九课：iPhone 文案 · 婚礼复述 · 时间与数据",
+  subtitle: "Mike 老师 · 口语实战",
+  intro: "从这课开始执行新规则：每天开课由学生先主动提问。朗读 iPhone Duo 广告词练流利度；复述婚礼经历；系统学习 at/on/in、move up / put off 和数据涨跌表达。",
+  sections: [
+    { h: "一、课前对话练习（新规则）", type: "tip", text: "新规则：每天正式上课前，由 Csen 先主动问老师问题（日常话题什么都行）。聊天要先学会提问，不要急着表达自己的想法、不要说太多。" },
+    { h: "本课练到的对话句", type: "table", head: ["中文","英文"], rows: [
+      ["你今天所在城市的天气怎么样？","<span class='en'>How about the weather in your city today?</span>"],
+      ["深圳气温多少度？","<span class='en'>What's the temperature in Shenzhen?</span>"],
+      ["大概 28 到 33 度。","<span class='en'>Around 28 to 33 degrees.</span>"],
+      ["我有点感冒，所以今天多穿了一点。","<span class='en'>I have a bit of a cold, so I wear more clothes today.</span>"],
+      ["你喜欢什么样的天气？","<span class='en'>What kind of weather do you like?</span>"],
+      ["未来你想去哪个国家旅行？","<span class='en'>Which country would you like to visit in the future?</span>"]
+    ]},
+    { h: "二、iPhone Duo 广告词朗读", type: "tip", text: "材料是老外原话（苹果广告文案，未简化）。训练重点：保持流利度和节奏，生词不会读就直接跳过，不要逐词卡壳。" },
+    { h: "课文开头（要求读熟的第一段）", type: "list", items: [
+      "<span class='en'>This is an iPhone. It's not the first iPhone to have your favorite apps, or the first to fit comfortably in your hand. It is the first iPhone to do this — so when you open Photos, you'll really see the big picture. And when you browse Safari, you'll see more when you scroll. You can bring two apps up side by side, so when you find a place to eat, you can get directions on the same screen at the same time.</span>"
+    ]},
+    { h: "看后复述任务（参考答案）", type: "list", items: [
+      "<span class='en'>When I watched this video, I feel this phone has a lot of advanced technology. It can take a lot of different pictures, but I don't know how much the phone costs. So if the phone has a great price, I want to buy it.</span>（句型：if ..., I want to ... 如果……我就……）"
+    ]},
+    { h: "三、婚礼经历复述（情绪 + 事件）", type: "tip", text: "练习用四五句话描述上周末去昆明参加婚礼的经历，要有情绪变化。注意：人「感到激动」用 excited（I was so excited），事物「令人激动」才用 exciting；过去的事用 was/were。" },
+    { h: "婚礼复述参考（一正一反）", type: "table", head: ["中文","英文"], rows: [
+      ["上周我去昆明参加了朋友的婚礼，非常激动。","<span class='en'>Last week I went to my friend's wedding in Kunming, and I was so excited.</span>"],
+      ["我在婚礼上喝醉了，因为同一桌喝了很多白酒。","<span class='en'>I was drunk at the wedding, because I drank a lot of baijiu at the same table.</span>"],
+      ["宴席后我和新娘的爸爸聊了很多，他很喜欢我，想约我下个月去玩。","<span class='en'>After the party, I talked a lot with the bride's father. He really likes me, so he wants to invite me to play next month.</span>"],
+      ["但我有点郁闷：听说有个朋友只想随礼 200 元，我觉得我们的友谊破裂了。","<span class='en'>But I'm a bit upset, because I heard a friend wanted to pay only 200 yuan. I think our friendship is breaking.</span>"]
+    ]},
+    { h: "四、时间表达：at / on / in", type: "table", head: ["介词","搭配","例句"], rows: [
+      ["<span class='en'>at</span>","具体时刻（点钟）","<span class='en'>at eight o'clock</span>"],
+      ["<span class='en'>on</span>","星期 / 具体日期","<span class='en'>on Friday / on September 15th</span>"],
+      ["<span class='en'>in</span>","月份 / 年份 / 季节 / 上午下午晚上","<span class='en'>in July / in 2026 / in spring / in the morning</span>"]
+    ]},
+    { h: "口诀", type: "tip", text: "at 接「点」，on 接「天」，in 接「年、月、季节」。年份后直接加数字即可（in 2038）。例句：I want to play basketball at eight o'clock on Friday morning." },
+    { h: "五、提前 · 推迟 · 假设", type: "table", head: ["表达","中文","例句"], rows: [
+      ["<span class='en'>move up</span>","提前","<span class='en'>Can we move up three days about this activity?</span> 我们能把活动提前三天吗？"],
+      ["<span class='en'>put off</span>","推迟","<span class='en'>If we put off three days, what will happen?</span> 假如推迟三天会发生什么？"],
+      ["<span class='en'>what will happen</span>","会发生什么","——"]
+    ]},
+    { h: "口语提示", type: "tip", text: "一般疑问句只要「Can we + 动词短语」的框架搭好，语序有小瑕疵没关系，外国人都能听懂。先求开口流利，再求精确。" },
+    { h: "六、数据涨跌描述", type: "table", head: ["表达","中文"], rows: [
+      ["<span class='en'>increase / go up / rise</span>","上升"],
+      ["<span class='en'>decrease / go down / drop</span>","下降"],
+      ["<span class='en'>increase by 10%</span>","提升了 10%（by + 幅度）"],
+      ["<span class='en'>decrease a lot</span>","下降了很多（无具体数字时用）"]
+    ]},
+    { h: "数据例句", type: "list", items: [
+      "<span class='en'>The Xiaomi phone's performance was increased by 75% this year.</span>（被动语态：be + 过去分词）",
+      "<span class='en'>In the past five years, Xiaomi phone sales decreased a lot.</span>（过去五年 = in the past five years，用 in）"
+    ]},
+    { h: "课后作业", type: "homework", text: "① 把 iPhone 文案第一段读熟；② 录音发给老师：iPhone 第一段朗读 + 婚礼感受（一正一反两段）；③ 方法：可以先写稿 → 看着读十几遍（背下来更好）→ 脱稿复述。练的不是单词量，是流利度和反应速度，要靠反复刷新。" }
+  ]
+}
+/* ★★★ 新课程粘贴在这一行的上方 ★★★ */
+];
+
+/* ============================================================
+   ★ 单词卡数据区 ★  audio 字段可选：填 mp3 路径
+   ============================================================ */
+const WORDS = [
+  { w:"browse", p:"/braʊz/", m:"v. 浏览", e:"When you browse Safari, you'll see more." },
+  { w:"scroll", p:"/skrəʊl/", m:"v. 滑动屏幕", e:"You'll see more when you scroll." },
+  { w:"directions", p:"/dəˈrekʃnz/", m:"n. 方向；导航", e:"Get directions on the same screen." },
+  { w:"screen", p:"/skriːn/", m:"n. 屏幕", e:"on the same screen at the same time" },
+  { w:"texture", p:"/ˈtektʃə/", m:"n. 质感", e:"a nanotexture finish" },
+  { w:"reflection", p:"/rɪˈflekʃn/", m:"n. 反光", e:"to reduce reflections" },
+  { w:"incredibly", p:"/ɪnˈkredəbli/", m:"adv. 极其；非常", e:"incredibly smooth and flat" },
+  { w:"durable", p:"/ˈdjʊərəbl/", m:"adj. 耐久的", e:"a durable hinge" },
+  { w:"hinge", p:"/hɪndʒ/", m:"n. 铰链", e:"the hinge of a folding phone" },
+  { w:"component", p:"/kəmˈpəʊnənt/", m:"n. 部件", e:"more than a hundred components" },
+  { w:"satisfying", p:"/ˈsætɪsfaɪɪŋ/", m:"adj. 令人满意的", e:"this satisfying snap" },
+  { w:"battery", p:"/ˈbætri/", m:"n. 电池", e:"dual batteries" },
+  { w:"tripod", p:"/ˈtraɪpɒd/", m:"n. 三脚架", e:"It can be its own tripod." },
+  { w:"photographer", p:"/fəˈtɒɡrəfə/", m:"n. 摄影师", e:"your own personal photographer" },
+  { w:"bride", p:"/braɪd/", m:"n. 新娘", e:"I talked a lot with the bride's father." },
+  { w:"invite", p:"/ɪnˈvaɪt/", m:"v. 邀请", e:"He wants to invite me to play next month." },
+  { w:"wedding", p:"/ˈwedɪŋ/", m:"n. 婚礼", e:"I went to my friend's wedding." },
+  { w:"upset", p:"/ʌpˈset/", m:"adj. 郁闷的", e:"I'm a bit upset." },
+  { w:"shocked", p:"/ʃɒkt/", m:"adj. 震惊的", e:"I'm totally shocked." },
+  { w:"waist", p:"/weɪst/", m:"n. 腰", e:"My waist hurts." },
+  { w:"Cantonese", p:"/ˌkæntəˈniːz/", m:"n. 粤语", e:"Cantonese is my mother language." },
+  { w:"puma", p:"/ˈpjuːmə/", m:"n. 美洲狮", e:"Pumas are large cat-like animals." },
+  { w:"relieved", p:"/rɪˈliːvd/", m:"adj. 如释重负的", e:"I'm very relieved." },
+  { w:"delighted", p:"/dɪˈlaɪtɪd/", m:"adj. 高兴的", e:"I'm delighted to hear that." },
+  { w:"grateful", p:"/ˈɡreɪtfl/", m:"adj. 感激的", e:"I'm very grateful." },
+  { w:"frustrating", p:"/frʌˈstreɪtɪŋ/", m:"adj. 令人沮丧的", e:"That's so frustrating." },
+  { w:"annoyed", p:"/əˈnɔɪd/", m:"adj. 恼火的", e:"I'm really annoyed." },
+  { w:"disappointed", p:"/ˌdɪsəˈpɔɪntɪd/", m:"adj. 失望的", e:"I'm quite disappointed." },
+  { w:"anxious", p:"/ˈæŋkʃəs/", m:"adj. 焦虑的", e:"I'm feeling anxious." },
+  { w:"tourist", p:"/ˈtʊərɪst/", m:"n. 游客", e:"the number of tourists" },
+  { w:"scenic", p:"/ˈsiːnɪk/", m:"adj. 风景的", e:"the scenic area 景区" },
+  { w:"sunrise", p:"/ˈsʌnraɪz/", m:"n. 日出", e:"the quiet sunrise above the clouds" },
+  { w:"Buddhist", p:"/ˈbʊdɪst/", m:"adj. 佛教的", e:"a famous Buddhist mountain" },
+  { w:"increase", p:"/ɪnˈkriːs/", m:"v. 上升", e:"increased by 10% 上涨10%" },
+  { w:"decrease", p:"/dɪˈkriːs/", m:"v. 下降", e:"sales decreased a lot" }
+];
+
+/* ================= 语音引擎（女声优先） ================= */
+let VOICES = [];
+const FEMALE_HINT = ['female','samantha','zira','victoria','karen','moira','tessa','fiona',
+  'aria','jenny','susan','allison','ava','serena','kate','stephanie','catherine','google uk english female'];
+const MALE_HINT = ['male','daniel','alex','fred','george','thomas','arthur','aaron','guy','james','david'];
+
+function refreshVoices(){
+  if(!('speechSynthesis' in window)) {
+    document.getElementById('voiceStatus').textContent = '⚠ 当前浏览器不支持语音合成，请用 Chrome / Edge / Safari 打开';
+    return;
+  }
+  VOICES = speechSynthesis.getVoices();
+  const sel = document.getElementById('voiceSelect');
+  const saved = localStorage.getItem('csen_voice');
+  const en = VOICES.filter(v => v.lang.toLowerCase().startsWith('en'));
+  sel.innerHTML = '';
+  if(!en.length){ sel.innerHTML = '<option value="">（暂无英文语音，重新打开声音设置刷新）</option>'; return; }
+  const score = v => {
+    const n = v.name.toLowerCase();
+    if(FEMALE_HINT.some(h => n.includes(h))) return 0;
+    if(MALE_HINT.some(h => n.includes(h))) return 2;
+    return 1;
+  };
+  en.sort((a,b) => score(a)-score(b));
+  en.forEach((v) => {
+    const o = document.createElement('option');
+    o.value = v.name;
+    o.textContent = (score(v)===0 ? '💃 ' : '   ') + v.name + ' (' + v.lang + ')';
+    sel.appendChild(o);
+    if(saved && v.name === saved) sel.value = v.name;
+  });
+  if(!sel.value) sel.selectedIndex = 0;
+  document.getElementById('voiceStatus').textContent =
+    '共 ' + en.length + ' 个英文声音，💃 为推荐女声（不同设备可选声音不同）';
+}
+if('speechSynthesis' in window){
+  refreshVoices();
+  speechSynthesis.onvoiceschanged = refreshVoices;
+}
+function getVoice(){
+  const name = document.getElementById('voiceSelect').value;
+  return VOICES.find(v => v.name === name) || VOICES.find(v => v.lang.toLowerCase().startsWith('en'));
+}
+function saveVoice(){
+  localStorage.setItem('csen_voice', document.getElementById('voiceSelect').value);
+  localStorage.setItem('csen_rate', document.getElementById('rate').value);
+}
+function speak(text, btn, audioPath){
+  if(audioPath){
+    const a = new Audio(audioPath);
+    a.play().catch(() => ttsSpeak(text, btn));
+    return;
+  }
+  ttsSpeak(text, btn);
+}
+function ttsSpeak(text, btn){
+  if(!('speechSynthesis' in window)){ alert('当前浏览器不支持语音，请用 Chrome / Edge / Safari 打开'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text.replace(/—/g, ', '));
+  const v = getVoice();
+  if(v) u.voice = v;
+  u.lang = 'en-US';
+  u.rate = parseFloat(localStorage.getItem('csen_rate') || document.getElementById('rate').value || 0.9);
+  if(btn){
+    btn.classList.add('on');
+    u.onend = u.onerror = () => btn.classList.remove('on');
+  }
+  speechSynthesis.speak(u);
+}
+function testVoice(){ speak('Hello, Csen! Nice to meet you.', null); }
+function openVoiceSettings(){
+  refreshVoices();
+  document.getElementById('voiceMask').classList.add('show');
+}
+(function(){
+  const r = localStorage.getItem('csen_rate');
+  if(r){ document.getElementById('rate').value = r; document.getElementById('rateVal').textContent = r; }
+})();
+
+/* ================= 页面逻辑 ================= */
+const listEl = document.getElementById('list');
+const detailEl = document.getElementById('detail');
+const emptyEl = document.getElementById('empty');
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+function speakBtn(text){
+  return ` <button class="speak" onclick="event.stopPropagation();speak('${text.replace(/'/g,"\'")}',this)">🔊 发音</button>`;
+}
+
+function renderList(filter=''){
+  listEl.innerHTML = '';
+  const kw = filter.trim().toLowerCase();
+  let shown = 0;
+  const reviewed = JSON.parse(localStorage.getItem('csen_reviewed') || '{}');
+  LESSONS.forEach(ls => {
+    const text = (ls.title + ls.subtitle + ls.intro + JSON.stringify(ls.sections)).toLowerCase();
+    if(kw && !text.includes(kw)) return;
+    shown++;
+    const card = document.createElement('div');
+    card.className = 'lesson-card' + (reviewed[ls.id] ? ' reviewed' : '');
+    card.innerHTML = `<div class="num">${ls.id}</div>
+      <div><div class="card-title">${esc(ls.title)}<span class="done-dot">✓ 已复习</span></div>
+      <div class="card-meta">${esc(ls.date)} · ${esc(ls.subtitle)}</div></div>
+      <div class="arrow">›</div>`;
+    card.onclick = () => showDetail(ls.id);
+    listEl.appendChild(card);
+  });
+  emptyEl.style.display = shown ? 'none' : 'block';
+}
+
+function sectionHTML(sec){
+  let body = '';
+  if(sec.type === 'list') body = '<ul>' + sec.items.map(i => `<li>${i}</li>`).join('') + '</ul>';
+  else if(sec.type === 'table') body = `<table><tr>${sec.head.map(h=>`<th>${h}</th>`).join('')}</tr>` +
+    sec.rows.map(r => '<tr>' + r.map(c => {
+      const m = c.match(/<span class='en'>([^<]+)<\/span>/);
+      return `<td>${c}${m ? speakBtn(m[1]) : ''}</td>`;
+    }).join('') + '</tr>').join('') + '</table>';
+  else if(sec.type === 'dialog') body = '<div class="dialog">' + sec.lines.map(l =>
+    `<p><span class="who">${esc(l[0])}:</span><span>${esc(l[1])}</span>${speakBtn(l[1])}</p>`).join('') + '</div>';
+  else if(sec.type === 'tip') body = `<div class="tip">💡 ${sec.text}</div>`;
+  else if(sec.type === 'homework') body = `<div class="homework">📌 ${sec.text}</div>`;
+  return `<div class="d-section"><h3>${sec.h}</h3>${body}</div>`;
+}
+
+let currentId = null;
+function showDetail(id){
+  const ls = LESSONS.find(l => l.id === id);
+  if(!ls) return;
+  currentId = id;
+  const reviewed = JSON.parse(localStorage.getItem('csen_reviewed') || '{}');
+  detailEl.innerHTML = `<button class="back" onclick="goBack()">‹ 返回课程列表</button>
+    <div class="d-title">${esc(ls.title)}</div>
+    <div class="d-meta">${esc(ls.date)} · ${esc(ls.subtitle)}</div>
+    <button class="review-btn ${reviewed[id]?'on':''}" id="reviewBtn" onclick="toggleReview()">${reviewed[id]?'✓ 本课已复习完成':'标记本课为已复习'}</button>` +
+    (ls.intro ? `<div class="tip" style="margin-bottom:22px">📖 ${ls.intro}</div>` : '') +
+    ls.sections.map(sectionHTML).join('');
+  detailEl.classList.add('show');
+  listEl.style.display = 'none'; emptyEl.style.display = 'none';
+  document.querySelector('#page-lessons .toolbar').style.display = 'none';
+  location.hash = '/lesson/' + id;
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function toggleReview(){
+  if(!currentId) return;
+  const reviewed = JSON.parse(localStorage.getItem('csen_reviewed') || '{}');
+  if(reviewed[currentId]){ delete reviewed[currentId]; } else { reviewed[currentId] = true; }
+  localStorage.setItem('csen_reviewed', JSON.stringify(reviewed));
+  const btn = document.getElementById('reviewBtn');
+  btn.classList.toggle('on', !!reviewed[currentId]);
+  btn.textContent = reviewed[currentId] ? '✓ 本课已复习完成' : '标记本课为已复习';
+  renderList(document.getElementById('search').value);
+}
+function goBack(){
+  detailEl.classList.remove('show');
+  listEl.style.display = '';
+  document.querySelector('#page-lessons .toolbar').style.display = '';
+  currentId = null;
+  location.hash = '';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+document.getElementById('search').addEventListener('input', e => renderList(e.target.value));
+
+/* 单词卡 */
+function renderWords(){
+  const box = document.getElementById('cards');
+  box.innerHTML = '';
+  WORDS.forEach(item => {
+    const d = document.createElement('div');
+    d.className = 'flip';
+    d.innerHTML = `<div class="flip-inner">
+      <div class="face">
+        <div class="word">${esc(item.w)}</div>
+        <div class="phon">${esc(item.p)}</div>
+        <button class="speak" onclick="event.stopPropagation();speak('${item.w}',this${item.audio?`,'${item.audio}'`:''})">🔊 发音</button>
+        <div class="flip-hint">点击翻面看释义 →</div>
+      </div>
+      <div class="face back">
+        <div class="meaning">${esc(item.m)}</div>
+        <div class="example">${esc(item.e)}</div>
+        <button class="speak" onclick="event.stopPropagation();speak('${item.e.replace(/'/g,"\'")}',this)">🔊 读例句</button>
+      </div>
+    </div>`;
+    d.onclick = () => d.classList.toggle('flipped');
+    box.appendChild(d);
+  });
+}
+function shuffleWords(){
+  for(let i=WORDS.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [WORDS[i],WORDS[j]]=[WORDS[j],WORDS[i]]; }
+  renderWords();
+}
+
+/* 页签切换 */
+function switchTab(tab){
+  document.getElementById('tab-lessons').classList.toggle('active', tab==='lessons');
+  document.getElementById('tab-words').classList.toggle('active', tab==='words');
+  document.getElementById('page-lessons').style.display = tab==='lessons' ? '' : 'none';
+  document.getElementById('page-words').style.display = tab==='words' ? '' : 'none';
+  if(tab==='lessons') goBack();
+  window.scrollTo({top:0});
+}
+function openHelp(){ document.getElementById('mask').classList.add('show'); }
+
+renderList();
+renderWords();
+
+/* 支持 #/lesson/9 这样的链接直接打开某节课 */
+(function(){
+  const m = location.hash.match(/^#\/lesson\/(\d+)/);
+  if(m){ showDetail(Number(m[1])); }
+})();
+</script>
+</body>
+</html>
