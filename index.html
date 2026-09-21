@@ -109,6 +109,7 @@
   footer{color:var(--sub);font-size:12px;text-align:center;padding:26px 0 40px;}
   @media(max-width:640px){.detail{padding:24px 20px;}h1{font-size:23px;}}
 </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -200,6 +201,82 @@
               dialog 对话 / tip 老师提醒 / homework 作业
    ============================================================ */
 const LESSONS = [
+{
+  id: 11,
+  date: "2026-09-19",
+  title: "第十一课：两篇课文朗读 · 日常话题四句话框架",
+  subtitle: "Mike 老师 · 口语实战",
+  intro: "课前聊聊「困宅的一天」，用上新学的定语从句；朗读两篇新概念课文（鸽子和澳洲来信）；抽查情绪 15 句；复练峨眉山段落；重点学习四个日常话题的「四句话回答框架」：一天、吃饭、爱好、城市生活。",
+  sections: [
+    { h: "一、课前交流：困 & 宅的一天", type: "list", items: [
+      "困 = <span class='en'>sleepy</span>；累 = <span class='en'>tired</span>：<span class='en'>I'm so tired. / I feel so sleepy.</span>",
+      "「宅在家里」英语没有对应词，直接说待在家里：<span class='en'>stay at home</span>；待在工作的地方：<span class='en'>stay in the place I work</span>",
+      "定语从句实战：<span class='en'>the place I work</span>（I work 描述 the place，就是上节课的 a place that ... 结构）。",
+      "「一点都不」= <span class='en'>not ... at all</span>：<span class='en'>I didn't do anything at all.</span>（比 didn't do anything 语气更强，完美表达）。",
+      "课前完整表达：<span class='en'>Today I stay in the place I work all day, and I didn't do anything at all, but I feel so sleepy.</span>"
+    ]},
+    { h: "二、朗读心法（老师强调）", type: "tip", text: "① 先扫一眼句子的长度和结构，逗号处停顿，从句处停顿，别看到一个词就说一个词；② 三个词三个词地说，有节奏；③ 生词不知道发音就按大概发音大胆读，流利度优先；④ 不要像中文一样字正腔圆地用力读英文——音量放小，用气息轻轻讲，音调压低一点反而更有磁性、更省力。阅读流利是口语流利的基础。" },
+    { h: "三、课文一：鸽子的「私人电话」", type: "list", items: [
+      "中文大意：James Scott 先生在索尔兹伯里有个汽车修理厂，又在平赫斯特买了一个新厂（两地相距仅五英里），但新厂装不了电话，于是他买了十二只鸽子。昨天一只鸽子三分钟就完成了两地间的首次送信。至今他用这种方式传送了大量索取备件和其他紧急消息的请求——就这样办起了自己的「私人电话」业务。",
+      "老师点评：有进步了！第二遍比第一遍流畅很多。"
+    ]},
+    { h: "课文一词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>garage</span>","车库；汽车修理厂"],
+      ["<span class='en'>pigeon</span>","鸽子"],
+      ["<span class='en'>request</span>","要求；请求"],
+      ["<span class='en'>spare parts</span>","多余的零件；备件"],
+      ["<span class='en'>urgent</span>","紧急的"],
+      ["<span class='en'>cover the distance</span>","跑完这段距离（完成距离）"],
+      ["<span class='en'>private</span>","私人的；私密的"]
+    ]},
+    { h: "四、课文二：一封来自澳大利亚的信", type: "list", items: [
+      "中文大意：我刚收到弟弟 Tim 的来信。他在澳大利亚，已经待了六个月。Tim 是一名工程师，为一家大公司工作，已经游览过澳洲许多地方。他刚买了一辆澳洲产的车，去了澳大利亚中部的小镇 Alice Springs，不久还要从那里飞往 Perth。弟弟以前从未出过国，所以觉得这次旅行非常激动人心。",
+      "老师点评：这篇读得比上一篇更好；地名（Alice Springs、Perth）读错也没关系。"
+    ]},
+    { h: "课文二词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>engineer</span>","工程师"],
+      ["<span class='en'>firm</span>","公司（= company）"],
+      ["<span class='en'>already</span>","已经"],
+      ["<span class='en'>buy → bought</span>","买（过去式）"],
+      ["<span class='en'>center</span>","中心"],
+      ["<span class='en'>abroad</span>","在国外；出国"],
+      ["<span class='en'>exciting</span>","令人兴奋的（形容事物）"]
+    ]},
+    { h: "五、情绪 15 句 & 峨眉山段落（抽查复练）", type: "tip", text: "情绪句基本过关，注意：形容人「感到激动」用 excited；relieved 总算松了一口气；anxious /ˈæŋkʃəs/ 焦虑；顺带记住 luxury /ˈlʌkʃəri/ 奢侈品。峨眉山段落越说越好，关键句：you still can meet the quiet sunrise above the clouds（用 meet，云 clouds 要加 s）。" },
+    { h: "六、核心新内容：日常话题「四句话框架」", type: "tip", text: "以后回答任何日常话题，四句话搞定：① 先说感受/回应 ② 具体做了什么（+时间地点）③ 观点或原因（because...）④ 收尾：现在想做什么。句子之间要有逻辑，别平铺直叙。" },
+    { h: "场景 1️⃣ 今天过得怎么样", type: "table", head: ["项目","内容"], rows: [
+      ["问句","<span class='en'>What did you do today? / How was your day?</span>"],
+      ["框架","① 感受 → ② 做了什么+时间 → ③ 观点+原因 → ④ 现在最想做什么"],
+      ["范文","<span class='en'>Today I feel uncomfortable. I slept all day and didn't learn anything. It made me a bit upset because I didn't study English. After that, I want to study more English next week.</span>"]
+    ]},
+    { h: "场景 2️⃣ 吃了什么（早/午/晚餐）", type: "table", head: ["项目","内容"], rows: [
+      ["问句","<span class='en'>What did you eat for lunch?</span>（三餐前用 for：for breakfast / for lunch / for dinner）"],
+      ["框架","① 回应体验 I had a good lunch → ② 吃了什么 → ③ 感受+原因 → ④ 下次想吃什么"],
+      ["范文","<span class='en'>For my lunch, I had take-away. I ate tomato and egg. It was plain because I can't cook by myself. Next time I want to eat a delicious lunch cooked by myself.</span>"]
+    ]},
+    { h: "场景 3️⃣ 爱好", type: "table", head: ["项目","内容"], rows: [
+      ["问句","<span class='en'>What's your hobby? / What do you like doing in your free time?</span>"],
+      ["框架","① In my free time I always... → ② usually+具体时间地点 → ③ 观点/原因 → ④ 什么时候想做什么"],
+      ["范文","<span class='en'>In my free time, I always play basketball. I usually play basketball on Friday at school. It makes me excited because I have a basketball team. This weekend I want to play tennis because I want to try a new one.</span>"]
+    ]},
+    { h: "场景 4️⃣ 城市生活", type: "table", head: ["项目","内容"], rows: [
+      ["问句","<span class='en'>Where do you live? / How do you feel about your city?</span>"],
+      ["框架","① 住哪+住了多久 → ② 平时在那做什么 → ③ 城市优点/缺点+观点（I prefer...）→ ④ 有更多时间想干嘛"],
+      ["范文","<span class='en'>I live in Chengdu. I usually eat hot pot with my friends. The good thing is the hot pot is delicious, but the bad thing is it's a bit spicy. I prefer to eat hot pot and drink tea because Chengdu is a peaceful city. If I have more time, I want to learn how to play Mahjong.</span>"]
+    ]},
+    { h: "本课新词补充", type: "table", head: ["表达","中文"], rows: [
+      ["<span class='en'>convenient</span>","便利的"],
+      ["<span class='en'>lifestyle</span>","生活方式"],
+      ["<span class='en'>prefer to do</span>","倾向于做……（I prefer to eat hot pot.）"],
+      ["<span class='en'>peaceful</span>","宁静的"],
+      ["<span class='en'>casual</span>","休闲的"],
+      ["<span class='en'>take-away</span>","外卖"],
+      ["<span class='en'>hobby</span>","爱好"]
+    ]},
+    { h: "七、老师点评", type: "tip", text: "朗读两篇课文都有进步，音量放低、用气息说之后明显顺了很多，以后保持这个状态。情绪句抽查基本通过。四个话题里「城市生活」最薄弱——句子之间要有逻辑关系，不是罗列。练习不要嫌乏味，练到一定量就掌握那种感觉，下次说新内容会更快上手。" },
+    { h: "课后作业", type: "homework", text: "① 用四句话框架说两段并录音发给老师：「我的一天」（明天真实经历）+「城市生活」（重新捋顺逻辑）；② 把课文一（鸽子送信）读熟；③ 继续每天朗读背诵指定课文；④ 早点休息，别熬夜。" }
+  ]
+},
 {
   id: 10,
   date: "2026-09-17",
@@ -360,7 +437,23 @@ const WORDS = [
   { w:"sunrise", p:"/ˈsʌnraɪz/", m:"n. 日出", e:"the quiet sunrise above the clouds" },
   { w:"Buddhist", p:"/ˈbʊdɪst/", m:"adj. 佛教的", e:"a famous Buddhist mountain" },
   { w:"increase", p:"/ɪnˈkriːs/", m:"v. 上升", e:"increased by 10% 上涨10%" },
-  { w:"decrease", p:"/dɪˈkriːs/", m:"v. 下降", e:"sales decreased a lot" }
+  { w:"decrease", p:"/dɪˈkriːs/", m:"v. 下降", e:"sales decreased a lot" },
+  { w:"sleepy", p:"/ˈsliːpi/", m:"adj. 困的", e:"I feel so sleepy today." },
+  { w:"garage", p:"/ˈɡærɑːʒ/", m:"n. 车库；修理厂", e:"He has a garage in Salisbury." },
+  { w:"pigeon", p:"/ˈpɪdʒɪn/", m:"n. 鸽子", e:"He bought twelve pigeons." },
+  { w:"request", p:"/rɪˈkwest/", m:"n. 请求；要求", e:"requests for spare parts" },
+  { w:"urgent", p:"/ˈɜːdʒənt/", m:"adj. 紧急的", e:"other urgent messages" },
+  { w:"private", p:"/ˈpraɪvət/", m:"adj. 私人的", e:"his own private telephone service" },
+  { w:"engineer", p:"/ˌendʒɪˈnɪə/", m:"n. 工程师", e:"Tim is an engineer." },
+  { w:"firm", p:"/fɜːm/", m:"n. 公司", e:"He works for a big firm." },
+  { w:"already", p:"/ɔːlˈredi/", m:"adv. 已经", e:"He has already visited many places." },
+  { w:"abroad", p:"/əˈbrɔːd/", m:"adv. 在国外", e:"He has never been abroad before." },
+  { w:"lifestyle", p:"/ˈlaɪfstaɪl/", m:"n. 生活方式", e:"I don't like this lifestyle at all." },
+  { w:"prefer", p:"/prɪˈfɜː/", m:"v. 更喜欢；倾向于", e:"I prefer to eat hot pot." },
+  { w:"peaceful", p:"/ˈpiːsfl/", m:"adj. 宁静的", e:"Chengdu is a peaceful city." },
+  { w:"casual", p:"/ˈkæʒuəl/", m:"adj. 休闲的", e:"a casual city" },
+  { w:"convenient", p:"/kənˈviːniənt/", m:"adj. 便利的", e:"My life is convenient here." },
+  { w:"hobby", p:"/ˈhɒbi/", m:"n. 爱好", e:"What's your hobby?" }
 ];
 
 /* ================= 语音引擎（女声优先） ================= */
