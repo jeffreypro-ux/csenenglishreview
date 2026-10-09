@@ -202,6 +202,114 @@
    ============================================================ */
 const LESSONS = [
 {
+  id: 14,
+  date: "2026-10-08",
+  title: "第十四课：复习测试 · 点咖啡 & 酒店入住场景对话 · 1分钟演讲",
+  subtitle: "Mike 老师 · 口语实战",
+  intro: "假期归来聊聊工作与考试；改错+疑问词小测试；实战演练两大高频场景——咖啡店点单和酒店入住；首次尝试1分钟自由演讲；十月起启用新模式：复习测试 + 场景对话 + 1分钟演讲。",
+  sections: [
+    { h: "一、课前交流：长假无休 & 换工作", type: "list", items: [
+      "中秋到现在一天没休：<span class='en'>I haven't had a holiday since the Mid-Autumn Festival.</span>",
+      "想换工作的核心原因：<span class='en'>This job is like a prison.</span>（像监狱一样）——每天坐 12 小时、接触不到新的人、没有正常的休息时间。",
+      "表达积累：正常的休息时间 <span class='en'>normal days off</span>；顶不住了 <span class='en'>I can't hold it anymore.</span>",
+      "重要安排：导游证考试 <span class='en'>November 22nd</span>。老师建议：<b>先别急着换工作，hold 住，考完试再说</b>——换工作要适应新环境，会影响备考。",
+      "考后的计划：可以辞职，找一份轻松的工作（<span class='en'>an easy job</span>），留出大量时间学习。",
+      "学习方向确认：<b>日常英语第一</b>（不只为了考试），然后才是考试英语。"
+    ]},
+    { h: "二、复习小测试", type: "tip", text: "隔了一周先做小测试，重温之前学过的内容。改错题：What did you did → What did you do（助动词后动词用原形）；Can you play the guitar（乐器前加 the，动词无三单）；Where is he going；Does he like spicy food（does 后动词原形）；How long did you stay in your hometown（疑问句不能少助动词 did）。" },
+    { h: "疑问词选填（How 家族）", type: "table", head: ["疑问词","用法","例句"], rows: [
+      ["<span class='en'>How far</span>","多远（距离）","<span class='en'>How far is the station? About two kilometers.</span>"],
+      ["<span class='en'>How many</span>","多少（可数）","<span class='en'>How many books do you have? / How many photos did you take during the holiday?</span>"],
+      ["<span class='en'>How long</span>","多久（时间）","<span class='en'>How long will you stay in China?</span>"],
+      ["<span class='en'>How often</span>","多频繁（频率）","<span class='en'>How often do you exercise? Twice a week.</span>"],
+      ["<span class='en'>How was</span>","……怎么样","<span class='en'>How was your trip / holiday?</span>"]
+    ]},
+    { h: "三、场景对话 1：咖啡店点单 ☕", type: "tip", text: "旅游国外最高频场景之一。对着英文菜单，会发音就大胆发音。「三分糖」不用 quarter，直接说百分比：30% sugar。" },
+    { h: "点咖啡词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>cafe</span>","咖啡厅"],
+      ["<span class='en'>menu</span>","菜单"],
+      ["<span class='en'>latte</span>","拿铁"],
+      ["<span class='en'>espresso</span>","浓缩咖啡"],
+      ["<span class='en'>americano</span>","美式咖啡"],
+      ["<span class='en'>cappuccino</span>","卡布奇诺"],
+      ["<span class='en'>mocha</span>","摩卡"],
+      ["<span class='en'>size</span>","尺寸（大中小杯）"],
+      ["<span class='en'>sugar</span>","糖"],
+      ["<span class='en'>bill</span>","账单"]
+    ]},
+    { h: "点咖啡常用表达", type: "list", items: [
+      "我要一杯拿铁：<span class='en'>I want a latte. / I'd like a latte.</span>",
+      "请给我菜单：<span class='en'>Please give me the menu.</span>",
+      "有什么推荐：<span class='en'>What do you recommend? / Do you have any recommendations?</span>（recommend 动词 / recommendation 名词）",
+      "有大杯吗：<span class='en'>Do you have a large size?</span>（中杯 middle size）",
+      "要加糖吗：<span class='en'>Would you like some sugar?</span>",
+      "三分糖：<span class='en'>a latte with 30% sugar</span>（with 连接）",
+      "堂食还是外带：<span class='en'>For here or take away?</span>",
+      "可以刷卡吗：<span class='en'>Can I pay by card?</span>",
+      "结账：<span class='en'>Could I have the bill, please?</span> / 给你钱：<span class='en'>Here you are.</span>"
+    ]},
+    { h: "点咖啡模拟对话", type: "dialog", lines: [
+      ["服务员","Hello, welcome! How many people?"],
+      ["我","Hello, just myself. Please give me the menu."],
+      ["服务员","What would you like to drink?"],
+      ["我","Do you have any recommendations?"],
+      ["服务员","Yes, our latte is very popular."],
+      ["我","OK, I want a middle-size latte with 30% sugar."],
+      ["服务员","Anything else?"],
+      ["我","No, that's all. Please give me a glass of water."],
+      ["服务员","For here or take away?"],
+      ["我","For here. Can I pay by card?"],
+      ["服务员","Sure, it's twenty-five yuan."],
+      ["我","OK, here you are. Thank you."]
+    ]},
+    { h: "四、场景对话 2：酒店入住 🏨", type: "tip", text: "语法点：「包含」用被动语态 included，且放在后面——Is breakfast included?（早餐是主语）包接送：Is the pickup service included?（pickup 接送）。" },
+    { h: "酒店词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>reception</span>","前台"],
+      ["<span class='en'>reservation</span>","预定"],
+      ["<span class='en'>passport</span>","护照"],
+      ["<span class='en'>key card</span>","房卡"],
+      ["<span class='en'>floor</span>","楼层"],
+      ["<span class='en'>check in / check out</span>","入住 / 退房"],
+      ["<span class='en'>fill in</span>","填写"],
+      ["<span class='en'>include</span>","包含"],
+      ["<span class='en'>wake-up call</span>","叫醒服务"],
+      ["<span class='en'>double room / twin room</span>","大床房 / 双床房"],
+      ["<span class='en'>under what name</span>","用什么名字（预定）"]
+    ]},
+    { h: "入住常用表达", type: "list", items: [
+      "办理入住：<span class='en'>I want to check in.</span>",
+      "我用王的名字订了房：<span class='en'>I have a reservation under Wang.</span>（reservation 已含订房之意，不用再加 room）",
+      "一间大床房住两晚：<span class='en'>a double room for two nights</span>（住几晚用 for）",
+      "含早餐吗：<span class='en'>Is breakfast included?</span>",
+      "早餐几点开始：<span class='en'>What time is breakfast?</span>（from 7 am to 10 am）",
+      "7点能叫醒我吗：<span class='en'>Can I have a wake-up call at seven o'clock?</span>（中文要捋顺再翻译）",
+      "几点退房：<span class='en'>When do I check out?</span>（before twelve 中午12点前）",
+      "这是您的房卡：<span class='en'>Here's your key card.</span>（305 在三层 on the third floor）"
+    ]},
+    { h: "入住模拟对话", type: "dialog", lines: [
+      ["前台","Welcome! How can I help you?"],
+      ["我","I want to check in. I have a reservation, a double room under Wang."],
+      ["前台","Can I have your passport?"],
+      ["我","Here you are."],
+      ["前台","How many nights do you want to stay?"],
+      ["我","Just two nights. Is breakfast included?"],
+      ["前台","Yes. It's from seven am to ten am."],
+      ["我","Can I have a wake-up call at seven o'clock?"],
+      ["前台","Sure. Your room is 305 on the third floor. Here's your key card."],
+      ["我","Thank you. When do I check out?"],
+      ["前台","Before twelve. Have a good day!"],
+      ["我","Thank you. You are so nice!"]
+    ]},
+    { h: "五、1 分钟自由演讲：My last holiday", type: "tip", text: "十月起每课加入 1 分钟自由演讲（场景模拟，坚持一周训练），锻炼语言组织与表达能力。方法：① 先用中文打草稿；② 加内容（和谁、因为什么、感受）；③ 套框架：I'd like to talk about... First... / And then... / so I feel...；④ 精简到 1 分钟，流利流畅就好。" },
+    { h: "演讲范文（Tom 学游泳的故事）", type: "list", items: [
+      "<span class='en'>I'd like to talk about my last holiday. My last holiday was last summer. It was very hot, so I went swimming with my friends. And then I taught Tom to swim, but he didn't learn it. I felt very angry. Although Tom learned it with other people later, so I felt surprised.</span>",
+      "老师点评：故事讲得完整、有细节；第二遍精简后明显有进步。注意避免词语重复，内容要言之有物。"
+    ]},
+    { h: "六、十月学习新规划", type: "tip", text: "十月（考试月）每课三部分：① 复习小测试（重温旧知识）② 日常场景对话（点咖啡、酒店入住等高频场景）③ 1 分钟自由演讲。目标：11 月 22 日导游证考试 + 日常口语实战能力。" },
+    { h: "课后作业", type: "homework", text: "① 从今天开始，每天用「不背单词」app 背四级词汇并截图发给老师（新概念课文不强求）；② 把点咖啡和酒店入住两段对话读熟，可跟网站里的 🔊 跟读；③ 按框架准备 1 分钟演讲稿（我的上一段假期）；④ 换工作的事先 hold 住，考完试再说。" }
+  ]
+},
+{
   id: 12,
   date: "2026-09-24",
   title: "第十二课：长胖表达 · 四篇课文连读 · 连读弱读技巧",
@@ -562,7 +670,27 @@ const WORDS = [
   { w:"gather", p:"/ˈɡæðə/", m:"v. 聚集", e:"People gathered under the clock." },
   { w:"strike", p:"/straɪk/", m:"v. 敲（钟）", e:"The clock would strike twelve." },
   { w:"refuse", p:"/rɪˈfjuːz/", m:"v. 拒绝", e:"The clock refused to welcome the new year." },
-  { w:"moment", p:"/ˈməʊmənt/", m:"n. 时刻", e:"At that moment, everybody began to laugh." }
+  { w:"moment", p:"/ˈməʊmənt/", m:"n. 时刻", e:"At that moment, everybody began to laugh." },
+  { w:"prison", p:"/ˈprɪzn/", m:"n. 监狱", e:"This job is like a prison." },
+  { w:"normal", p:"/ˈnɔːml/", m:"adj. 正常的", e:"I don't have normal days off." },
+  { w:"during", p:"/ˈdjʊərɪŋ/", m:"prep. 在……期间", e:"What did you do during the holiday?" },
+  { w:"hometown", p:"/ˈhəʊmtaʊn/", m:"n. 家乡", e:"How long did you stay in your hometown?" },
+  { w:"twice", p:"/twaɪs/", m:"adv. 两次", e:"I exercise twice a week." },
+  { w:"cafe", p:"/ˈkæfeɪ/", m:"n. 咖啡厅", e:"Let's meet at the cafe." },
+  { w:"menu", p:"/ˈmenjuː/", m:"n. 菜单", e:"Please give me the menu." },
+  { w:"latte", p:"/ˈlɑːteɪ/", m:"n. 拿铁", e:"a middle-size latte with 30% sugar" },
+  { w:"sugar", p:"/ˈʃʊɡə/", m:"n. 糖", e:"Would you like some sugar?" },
+  { w:"bill", p:"/bɪl/", m:"n. 账单", e:"Could I have the bill, please?" },
+  { w:"recommend", p:"/ˌrekəˈmend/", m:"v. 推荐", e:"What do you recommend?" },
+  { w:"reception", p:"/rɪˈsepʃn/", m:"n. 前台", e:"Ask at the reception." },
+  { w:"reservation", p:"/ˌrezəˈveɪʃn/", m:"n. 预定", e:"I have a reservation under Wang." },
+  { w:"passport", p:"/ˈpɑːspɔːt/", m:"n. 护照", e:"Can I have your passport?" },
+  { w:"floor", p:"/flɔː/", m:"n. 楼层", e:"on the third floor" },
+  { w:"include", p:"/ɪnˈkluːd/", m:"v. 包含", e:"Is breakfast included?" },
+  { w:"double room", p:"/ˈdʌbl ruːm/", m:"n. 大床房", e:"a double room for two nights" },
+  { w:"twin room", p:"/twɪn ruːm/", m:"n. 双床房", e:"a twin room" },
+  { w:"speech", p:"/spiːtʃ/", m:"n. 演讲", e:"a one-minute speech" },
+  { w:"surprised", p:"/səˈpraɪzd/", m:"adj. 惊讶的", e:"I felt surprised." }
 ];
 
 /* ================= 语音引擎（女声优先） ================= */
