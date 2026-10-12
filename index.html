@@ -202,6 +202,115 @@
    ============================================================ */
 const LESSONS = [
 {
+  id: 15,
+  date: "2026-10-10",
+  title: "第十五课：超市购物 & 问路口语场景 · 演讲关键词法",
+  subtitle: "Mike 老师 · 口语实战",
+  intro: "课前聊聊连上13天班；快速复习酒店入住和点咖啡场景；新学两大高频场景——超市购物结账和问路；1分钟演讲首次用「关键词三步法」描述常用网站和一段享受过的旅程。",
+  sections: [
+    { h: "一、课前交流：连班与假期", type: "list", items: [
+      "中秋节 = <span class='en'>Mid-Autumn Festival</span>（mid = 中间，autumn = 秋天）。",
+      "从中秋后一直没休息，连上 13 天班，即将迎来 3 天假期：<span class='en'>I haven't had a rest since the Mid-Autumn Festival. I need to sleep.</span>",
+      "「有精神/清醒」英语没有很准确的词，用 <span class='en'>fresh</span>：<span class='en'>After three days' holiday, I will be fresh.</span>（简单说法：I will be good / better）",
+      "老师提醒：很多时候不是不认识单词，而是<b>拿不出来</b>——要多练，才能灵活运用。"
+    ]},
+    { h: "二、快速复习：上节两大场景", type: "list", items: [
+      "酒店入住：<span class='en'>I want to check in. I have a reservation under Wang.</span>",
+      "⚠️ 预定是 <span class='en'>reservation</span>，别和 review（复习）、revision 搞混。",
+      "退房时间的准确说法：<span class='en'>What time should I check out?</span>（中文先捋顺再翻译）。",
+      "点咖啡：<span class='en'>Do you have any recommendations? / Can I pay by card?</span>（recommend 动词，recommendation 名词）",
+      "演讲复习：Tom 学游泳的故事——新学「仍然」<span class='en'>still</span>：Tom still can't swim."
+    ]},
+    { h: "三、场景对话 1：超市购物 🛒", type: "tip", text: "购物场景四要素：找东西、问价格、称重、结账。要鸡蛋、牛肉等名词不会就上网搜——点单思路都一样。" },
+    { h: "超市词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>supermarket</span>","超市"],
+      ["<span class='en'>shopping cart</span>","购物车"],
+      ["<span class='en'>basket</span>","购物篮"],
+      ["<span class='en'>price</span>","价格"],
+      ["<span class='en'>fruit area</span>","水果区"],
+      ["<span class='en'>checkout</span>","收银台"],
+      ["<span class='en'>discount</span>","折扣"],
+      ["<span class='en'>receipt</span>","小票"],
+      ["<span class='en'>kilo</span>","公斤"],
+      ["<span class='en'>weigh</span>","称重（动词）"]
+    ]},
+    { h: "超市常用表达", type: "list", items: [
+      "购物篮在哪：<span class='en'>Where is the basket?</span>",
+      "苹果在哪：<span class='en'>Do you know where the apples are?</span>",
+      "每公斤多少钱：<span class='en'>How much are the apples per kilo?</span>（apples 复数用 are；per kilo = 每公斤）",
+      "有折扣吗：<span class='en'>Is there any discount?</span>（there be 的疑问句把 is 提前）",
+      "我要两盒鸡蛋：<span class='en'>I want two boxes of eggs.</span>（box → boxes）",
+      "哪里称重：<span class='en'>Where can I get this weighed?</span>（weighed = 称一下重）",
+      "收银台在哪：<span class='en'>Where is the checkout? / Is the checkout here?</span>",
+      "可以刷卡吗：<span class='en'>Can I pay by card?</span>",
+      "给我小票：<span class='en'>Please give me the receipt.</span>"
+    ]},
+    { h: "超市模拟对话", type: "dialog", lines: [
+      ["店员","Hello, how are you? Do you need a shopping cart?"],
+      ["我","Hello, I just want a basket. Do you know where the apples are?"],
+      ["店员","Yes, they are in the fruit area."],
+      ["我","How much are the apples per kilo?"],
+      ["店员","Twenty-five yuan per kilo, and we have a discount today."],
+      ["我","OK, I want to get some. Where can I get this weighed?"],
+      ["店员","Just over there. Anything else?"],
+      ["我","One more bottle of milk. Is the checkout here?"],
+      ["店员","Yes. That's thirty-two yuan."],
+      ["我","Can I pay by card?"],
+      ["店员","Of course. Here's your receipt."],
+      ["我","OK, thank you."]
+    ]},
+    { h: "四、场景对话 2：问路 🗺️", type: "tip", text: "英语先说重点：中文「在第一个十字路口左转」，英语先说 turn left，再放地点：Turn left at the first crossing。" },
+    { h: "问路词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>street / road</span>","街道 / 马路"],
+      ["<span class='en'>go straight</span>","直走"],
+      ["<span class='en'>turn left / right</span>","左转 / 右转"],
+      ["<span class='en'>turn around</span>","掉头"],
+      ["<span class='en'>go back</span>","往回走"],
+      ["<span class='en'>crossing</span>","十字路口"],
+      ["<span class='en'>subway</span>","地铁"],
+      ["<span class='en'>station</span>","车站"],
+      ["<span class='en'>nearby</span>","在附近"],
+      ["<span class='en'>far</span>","远"],
+      ["<span class='en'>map</span>","地图"],
+      ["<span class='en'>road sign</span>","路标"]
+    ]},
+    { h: "问路常用表达", type: "list", items: [
+      "打扰一下：<span class='en'>Excuse me, do you know where the subway station is?</span>",
+      "怎么走：<span class='en'>Go straight and turn right at the first crossing.</span>",
+      "离这里远吗：<span class='en'>Is it far from here?</span>（⚠️ 不是 how far from here）",
+      "走路大概多久：<span class='en'>About how long will it take to walk there?</span>（take = 花费时间；about 可放句首）",
+      "附近有车站/洗手间吗：<span class='en'>Is there a bus station / a toilet nearby?</span>（有没有 = Is there）",
+      "我会错过车站吗：<span class='en'>Will I miss the station?</span>（miss = 错过）",
+      "我会留意路标：<span class='en'>I will take care of the road signs.</span>",
+      "祝你好运：<span class='en'>Good luck.</span>"
+    ]},
+    { h: "问路模拟对话", type: "dialog", lines: [
+      ["路人","Hello, what can I do for you?"],
+      ["我","Excuse me, do you know where the subway station is?"],
+      ["路人","Yes, go straight and turn right at the first crossing."],
+      ["我","Is it far from here?"],
+      ["路人","Not too far, just walk about five minutes."],
+      ["我","Is there a toilet nearby?"],
+      ["路人","Yes, there's one in the subway station."],
+      ["我","OK. Will I miss the station?"],
+      ["路人","No, it's very easy to find."],
+      ["我","Thank you very much. I will take care of the road signs."],
+      ["路人","You're welcome. Good luck."]
+    ]},
+    { h: "五、1 分钟演讲：关键词三步法", type: "tip", text: "① 先用中文打草稿，从头讲一遍；② 锁定关键词（按自己的习惯选，如 documentary 纪录片、food documentary、relax、kitchen skills）；③ 套框架组织：I would like to describe... First... And... Second... But... Also...。关键词打乱后自己理顺，锻炼组织能力。" },
+    { h: "范文 A：一个有用的网站（B站）", type: "list", items: [
+      "<span class='en'>Today I will describe a useful website I often visit. This website has a lot of documentaries. Last summer, my sister and I often watched food documentaries because my sister didn't go to a good college. It made her upset, so we watched a lot of food documentaries to relax. We also learned a lot of kitchen skills, and I still use these skills until now. So I think this website is very useful.</span>",
+      "亮点表达：我现在仍然在用 <span class='en'>I still use these skills until now.</span>"
+    ]},
+    { h: "范文 B：一段享受过的旅程（大理）", type: "list", items: [
+      "<span class='en'>Today I want to describe a trip I enjoyed. Two years ago, I went to Dali by myself. At that time, I just broke up and my work was very tiring, so I wanted to go on a trip to relax. Dali has fresh air and beautiful views, and delicious local food. But the local dishes are large in size, so I couldn't finish them all. This trip made me feel relaxed and meaningful.</span>",
+      "亮点表达：失恋 <span class='en'>break up</span>；有意义的、充实的 <span class='en'>meaningful</span>。"
+    ]},
+    { h: "六、老师点评", type: "tip", text: "做减法比堆砌更好——用简单的「主谓宾、主系表」大胆说，第三遍要快速、简单地说出来；不要习惯拖沓，想到了就马上说。" },
+    { h: "课后安排", type: "homework", text: "① 这三天假期好好休息（明天歇一天，后天交作业）；② 「不背单词」四级词汇继续每天打卡截图；③ 把超市和问路两段对话读熟，可跟网站里的 🔊 跟读；④ 用关键词三步法准备两个演讲话题：一个有用的网站、一段享受过的旅程。" }
+  ]
+},
+{
   id: 14,
   date: "2026-10-08",
   title: "第十四课：复习测试 · 点咖啡 & 酒店入住场景对话 · 1分钟演讲",
@@ -690,7 +799,27 @@ const WORDS = [
   { w:"double room", p:"/ˈdʌbl ruːm/", m:"n. 大床房", e:"a double room for two nights" },
   { w:"twin room", p:"/twɪn ruːm/", m:"n. 双床房", e:"a twin room" },
   { w:"speech", p:"/spiːtʃ/", m:"n. 演讲", e:"a one-minute speech" },
-  { w:"surprised", p:"/səˈpraɪzd/", m:"adj. 惊讶的", e:"I felt surprised." }
+  { w:"surprised", p:"/səˈpraɪzd/", m:"adj. 惊讶的", e:"I felt surprised." },
+  { w:"fresh", p:"/freʃ/", m:"adj. 精神焕发的", e:"After the holiday, I will be fresh." },
+  { w:"still", p:"/stɪl/", m:"adv. 仍然", e:"Tom still can't swim." },
+  { w:"supermarket", p:"/ˈsuːpəmɑːkɪt/", m:"n. 超市", e:"Do you need a shopping cart?" },
+  { w:"cart", p:"/kɑːt/", m:"n. 购物车", e:"a shopping cart" },
+  { w:"basket", p:"/ˈbɑːskɪt/", m:"n. 购物篮", e:"Where is the basket?" },
+  { w:"price", p:"/praɪs/", m:"n. 价格", e:"How much are the apples per kilo?" },
+  { w:"discount", p:"/ˈdɪskaʊnt/", m:"n. 折扣", e:"Is there any discount?" },
+  { w:"receipt", p:"/rɪˈsiːt/", m:"n. 小票", e:"Please give me the receipt." },
+  { w:"kilo", p:"/ˈkiːləʊ/", m:"n. 公斤", e:"twenty-five yuan per kilo" },
+  { w:"weigh", p:"/weɪ/", m:"v. 称重", e:"Where can I get this weighed?" },
+  { w:"straight", p:"/streɪt/", m:"adv. 径直地", e:"Go straight and turn right." },
+  { w:"crossing", p:"/ˈkrɒsɪŋ/", m:"n. 十字路口", e:"turn right at the first crossing" },
+  { w:"subway", p:"/ˈsʌbweɪ/", m:"n. 地铁", e:"where the subway station is" },
+  { w:"nearby", p:"/ˌnɪəˈbaɪ/", m:"adv. 在附近", e:"Is there a toilet nearby?" },
+  { w:"miss", p:"/mɪs/", m:"v. 错过", e:"Will I miss the station?" },
+  { w:"documentary", p:"/ˌdɒkjuˈmentri/", m:"n. 纪录片", e:"food documentaries" },
+  { w:"website", p:"/ˈwebsaɪt/", m:"n. 网站", e:"a useful website I often visit" },
+  { w:"meaningful", p:"/ˈmiːnɪŋfl/", m:"adj. 有意义的；充实的", e:"This trip was meaningful." },
+  { w:"break up", p:"/breɪk ʌp/", m:"v. 分手；失恋", e:"I just broke up." },
+  { w:"skill", p:"/skɪl/", m:"n. 技能", e:"learn a lot of kitchen skills" }
 ];
 
 /* ================= 语音引擎（女声优先） ================= */
