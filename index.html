@@ -202,6 +202,106 @@
    ============================================================ */
 const LESSONS = [
 {
+  id: 16,
+  date: "2026-10-13",
+  title: "第十六课：药店买药 & 景区带团场景 · 演讲要有深度",
+  subtitle: "Mike 老师 · 口语实战",
+  intro: "假期结束状态回满；快速复习四大场景；新学药店买药和景区带团两大场景（导游方向实战）；1分钟演讲训练「为什么当导游」和「我最喜欢的景点」，从流水账升级到有深度的演讲；老师给出背单词的落地方法。",
+  sections: [
+    { h: "一、课前交流", type: "list", items: [
+      "三天假期睡饱了：<span class='en'>I slept all day and today I feel much better.</span>",
+      "15 号是最后一天上班，之后找新工作 + 全力备考。",
+      "本周课程结构不变：复习测试 → 日常场景对话 → 1 分钟演讲。"
+    ]},
+    { h: "二、快速复习：四大场景核心句", type: "list", items: [
+      "酒店：<span class='en'>I want to check in. I have a reservation under Wang.</span>",
+      "点咖啡：<span class='en'>Do you have any recommendations? Can I pay by card?</span>",
+      "超市：<span class='en'>How much are the apples per kilo? Is there any discount? Please give me the receipt.</span>",
+      "问路：<span class='en'>Excuse me, do you know where the subway station is? Go straight and turn right at the first crossing.</span>",
+      "⚠️ 纠偏：问「大概要走多久」用 <span class='en'>How long to get there? / How long to walk there?</span>（there = 目的地，不是 here）。"
+    ]},
+    { h: "三、场景对话 1：药店买药 💊", type: "tip", text: "国外买药万能流程：问在哪 → 问价格 → 说明症状 → 问吃法 → 问副作用 → 问处方 → 付款。药名不会就谷歌搜。止痛药 painkillers = pain（疼痛）+ killer（杀手），「杀死疼痛的东西」——记单词时想画面。" },
+    { h: "药店词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>pharmacy</span>","药店（ph 开头）"],
+      ["<span class='en'>medicine</span>","药"],
+      ["<span class='en'>pain</span>","疼痛"],
+      ["<span class='en'>headache</span>","头疼"],
+      ["<span class='en'>fever</span>","发烧"],
+      ["<span class='en'>pill</span>","药片"],
+      ["<span class='en'>cold</span>","感冒"],
+      ["<span class='en'>prescription</span>","处方"],
+      ["<span class='en'>painkillers</span>","止痛药"],
+      ["<span class='en'>side effects</span>","副作用（side 边缘 + effect 作用）"]
+    ]},
+    { h: "药店常用表达", type: "list", items: [
+      "感冒药在哪：<span class='en'>Where is the cold medicine?</span>",
+      "这药多少钱：<span class='en'>How much is this medicine?</span>",
+      "我头疼需要止痛药：<span class='en'>I have a headache, so I need painkillers.</span>",
+      "一天吃几次：<span class='en'>How many times a day should I take it?</span>（疑问句框架：疑问词 + 助动词 + 主语 + 动词）",
+      "「吃」药的吃：take / get / have 都行，take 最常用。",
+      "有副作用吗：<span class='en'>Does this medicine have any side effects?</span>（三单用 does）",
+      "需要处方吗：<span class='en'>Do I need a prescription?</span>",
+      "饭后服用：<span class='en'>take it after meals</span>；饭前：<span class='en'>before the meal</span>；睡前：<span class='en'>before sleep</span>",
+      "一天两次：<span class='en'>twice a day</span>"
+    ]},
+    { h: "药店模拟对话", type: "dialog", lines: [
+      ["店员","Hello, sir. What can I do for you?"],
+      ["我","Do you know where the cold medicine is?"],
+      ["店员","Yes, on the shelf, straight ahead."],
+      ["我","How much is this medicine? I have a headache, so I need painkillers."],
+      ["店员","Fifty yuan. Just take it twice a day."],
+      ["我","OK. Does this medicine have any side effects? Do I need a prescription?"],
+      ["店员","No prescription needed. Just take it after meals. Anything else?"],
+      ["我","No, thank you. Can I pay by card?"],
+      ["店员","Sure. That's fifty yuan in total. Here's your receipt."],
+      ["我","Thank you."]
+    ]},
+    { h: "四、场景对话 2：景区带团 🏔️", type: "tip", text: "导游带老外团的实战话术（考试和工作都用得上）。核心句型先记：Welcome to... / Please follow me and don't get lost. / No photos in the hall. / Feel free to ask me if you have any questions." },
+    { h: "景区词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>scenic spot</span>","景区；景点"],
+      ["<span class='en'>follow</span>","跟随"],
+      ["<span class='en'>gather / meet</span>","集合"],
+      ["<span class='en'>valuables</span>","贵重物品"],
+      ["<span class='en'>restroom</span>","卫生间"],
+      ["<span class='en'>history</span>","历史"],
+      ["<span class='en'>get lost</span>","迷路（lost 是形容词，前面加 get）"],
+      ["<span class='en'>feel free to do</span>","随便做……（别加 I，直接说 feel free）"]
+    ]},
+    { h: "带团常用表达", type: "list", items: [
+      "欢迎词：<span class='en'>Hello everybody, welcome to this scenic spot. This building has 800 years of history.</span>",
+      "跟上别掉队：<span class='en'>Please follow me and don't get lost.</span>",
+      "禁止拍照（最简洁）：<span class='en'>No photos in the hall.</span>",
+      "一小时后集合：<span class='en'>We will meet here in one hour.</span>",
+      "保管好贵重物品：<span class='en'>Please take care of your valuables.</span>",
+      "有问题随时问我：<span class='en'>Feel free to ask me if you have any questions.</span>（英语先说重点：feel free to ask me 在前，if 条件在后）",
+      "卫生间在那边：<span class='en'>The restroom is over there.</span>"
+    ]},
+    { h: "带团模拟对话", type: "dialog", lines: [
+      ["游客","Wow, this place is so beautiful!"],
+      ["导游","Welcome to this scenic spot. This building has 800 years of history."],
+      ["游客","Where are we going next?"],
+      ["导游","Please follow me and don't get lost. No photos in the hall."],
+      ["游客","Got it. Could you tell me where the restroom is?"],
+      ["导游","It's over there. We will meet here in one hour."],
+      ["游客","OK, one hour."],
+      ["导游","Please take care of your valuables. Feel free to ask me if you have any questions."],
+      ["游客","Thank you very much."]
+    ]},
+    { h: "五、1 分钟演讲", type: "tip", text: "本课两个重要进步点：① 不要先说一个词再想一个词——3~4 个词连续蹦出来，输出才流利；② 流水账 ≠ 演讲，要加深度——用 you 的视角拉近距离，结尾升华观点（如「先付出才有回报」）。越简单越流利。" },
+    { h: "范文 A：Why I want to be a tour guide", type: "list", items: [
+      "<span class='en'>Today I will describe why I want to be a tour guide. Three months ago, I had an idea. I want to meet different foreigners and practice my English, so I joined the tour guide exam. But the exam is very difficult. It makes me anxious, so I study hard every day. I hope I will pass the exam in the future.</span>",
+      "亮点表达：外国人 <span class='en'>foreigner</span>；通过考试 <span class='en'>pass the exam</span>；提高 <span class='en'>improve</span>。"
+    ]},
+    { h: "范文 B：My favorite Chinese scenic spot（泰山）", type: "list", items: [
+      "<span class='en'>Today I will describe my favorite Chinese scenic spot. It is Mount Tai, in my hometown. It is very tall, about 1,545 meters. I always climb the mountain with my friends on summer holidays. We always feel tired, but when you get to the top of the mountain, you will see the sunrise and the sea of clouds. It makes you excited and gives you hope in life.</span>",
+      "亮点表达：山顶 <span class='en'>the top of the mountain</span>；云海 <span class='en'>the sea of clouds</span>；升华句：就像人生，<b>先付出才有回报</b>。",
+      "老师点评：后半段加了景色 + 人生感悟，从流水账变成了有深度的演讲——这才是演讲跟作文的区别。"
+    ]},
+    { h: "六、背单词落地方法", type: "tip", text: "① 「不背单词」每天 15 个，周四上课前攒够 30 个；② 手抄到笔记本上带来上课；③ 上课时用这些词造句（像 painkillers 一样用过才记得牢，造句比单纯看和听有效得多）；④ 不必强求全用上，看到哪个词够得着就用哪个，老师也会提示。" },
+    { h: "课后作业", type: "homework", text: "① 周四上课前背完 30 个四级单词（不背单词打卡 + 手抄笔记本）；② 把药店和景区两段对话读熟，跟网站 🔊 跟读；③ 用关键词三步法准备两个演讲：为什么当导游、我最喜欢的景点（结尾加一句观点升华）；④ 继续每天听英语磨耳朵。" }
+  ]
+},
+{
   id: 15,
   date: "2026-10-10",
   title: "第十五课：超市购物 & 问路口语场景 · 演讲关键词法",
@@ -819,7 +919,25 @@ const WORDS = [
   { w:"website", p:"/ˈwebsaɪt/", m:"n. 网站", e:"a useful website I often visit" },
   { w:"meaningful", p:"/ˈmiːnɪŋfl/", m:"adj. 有意义的；充实的", e:"This trip was meaningful." },
   { w:"break up", p:"/breɪk ʌp/", m:"v. 分手；失恋", e:"I just broke up." },
-  { w:"skill", p:"/skɪl/", m:"n. 技能", e:"learn a lot of kitchen skills" }
+  { w:"skill", p:"/skɪl/", m:"n. 技能", e:"learn a lot of kitchen skills" },
+  { w:"pharmacy", p:"/ˈfɑːməsi/", m:"n. 药店", e:"Where is the pharmacy?" },
+  { w:"medicine", p:"/ˈmedɪsn/", m:"n. 药", e:"How much is this medicine?" },
+  { w:"headache", p:"/ˈhedeɪk/", m:"n. 头疼", e:"I have a headache." },
+  { w:"fever", p:"/ˈfiːvə/", m:"n. 发烧", e:"I have a fever." },
+  { w:"pill", p:"/pɪl/", m:"n. 药片", e:"take two pills a day" },
+  { w:"prescription", p:"/prɪˈskrɪpʃn/", m:"n. 处方", e:"Do I need a prescription?" },
+  { w:"painkiller", p:"/ˈpeɪnkɪlə/", m:"n. 止痛药", e:"I need some painkillers." },
+  { w:"meal", p:"/miːl/", m:"n. 一餐；饭", e:"take it after meals 饭后服用" },
+  { w:"tour guide", p:"/tʊə ɡaɪd/", m:"n. 导游", e:"Why I want to be a tour guide" },
+  { w:"foreigner", p:"/ˈfɒrənə/", m:"n. 外国人", e:"I want to meet different foreigners." },
+  { w:"improve", p:"/ɪmˈpruːv/", m:"v. 提高", e:"practice my English and improve it" },
+  { w:"pass", p:"/pɑːs/", m:"v. 通过（考试）", e:"I hope I will pass the exam." },
+  { w:"top", p:"/tɒp/", m:"n. 顶部", e:"the top of the mountain 山顶" },
+  { w:"valuables", p:"/ˈvæljuəblz/", m:"n. 贵重物品", e:"Please take care of your valuables." },
+  { w:"get lost", p:"/ɡet lɒst/", m:"v. 迷路", e:"Please follow me and don't get lost." },
+  { w:"feel free", p:"/fiːl friː/", m:"phr. 随便；随时", e:"Feel free to ask me any questions." },
+  { w:"follow", p:"/ˈfɒləʊ/", m:"v. 跟随", e:"Please follow me." },
+  { w:"restroom", p:"/ˈrestruːm/", m:"n. 卫生间", e:"Could you tell me where the restroom is?" }
 ];
 
 /* ================= 语音引擎（女声优先） ================= */
