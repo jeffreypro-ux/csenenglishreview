@@ -202,6 +202,78 @@
    ============================================================ */
 const LESSONS = [
 {
+  id: 19,
+  date: "2026-10-22",
+  title: "第十九课：全英对话实战 · 职场提问 & 团建 & 三个陈述话题",
+  subtitle: "Mike 老师 · 口语实战（无 PPT 全英文）",
+  intro: "首次全英文对话课：场景一——入职第一天向同事询问商业报告（问什么、何时交、交给谁）；场景二——咨询团建细节再决定报名；陈述话题三个：完美周末、放松的地方、计划赶不上变化的一次经历。后面两节课继续全英模式。",
+  sections: [
+    { h: "一、课前交流：健身第一课", type: "list", items: [
+      "第一次去健身房，练完浑身疼：<span class='en'>I went to the gym on Monday and Tuesday. My body is very hurt now.</span>",
+      "老师经验：肌肉需要时间适应，<span class='en'>You need at least one or two weeks. Overcome the first week, and you will enjoy it.</span>（正好用上 overcome！）"
+    ]},
+    { h: "二、课程新模式：全英文环境", type: "tip", text: "本课起不开 PPT，全程英语对话——英语思维只能靠全英的输入和输出练出来，看中文翻译永远是「二手」的。后面两节课继续这个模式。老师提醒：<b>一定要记单词</b>，不会说的词老师会按你的单词量教。疑问句部分相对简单，陈述部分最综合（要有观点+逻辑），慢慢来，一次比一次进步。" },
+    { h: "三、场景 ①：入职第一天——问清商业报告", type: "tip", text: "背景：第一天上班，要准备一份 business report，但不知道怎么开始、信息不足，向同事 Mike 提问。职场原则：从现实角度问四个问题——做什么内容？什么时候交？需要做什么？交给谁？别急着带自己的想法（提了想法就要自己去执行，会影响首要任务）。" },
+    { h: "职场黄金问句", type: "table", head: ["问句","中文"], rows: [
+      ["<span class='en'>What kind of business report do I need to do?</span>","我需要做哪种商业报告？"],
+      ["<span class='en'>What time should I finish this report?</span>","我什么时候要交？"],
+      ["<span class='en'>Who should I submit this report to?</span>","这份报告应该交给谁？（submit = hand in 提交）"],
+      ["<span class='en'>Where can I get this information?</span>","我在哪里能找到这些信息？（特殊疑问词 + 情态动词，很常用！）"],
+      ["<span class='en'>Do I need domestic information or global information?</span>","需要国内信息还是全球信息？"]
+    ]},
+    { h: "职场词汇", type: "table", head: ["单词","中文"], rows: [
+      ["<span class='en'>business report</span>","商业报告"],
+      ["<span class='en'>marketing</span>","市场营销"],
+      ["<span class='en'>database</span>","数据库（data 数据 + base 基地）"],
+      ["<span class='en'>submit / hand in</span>","提交 / 上交"],
+      ["<span class='en'>domestic</span>","国内的"],
+      ["<span class='en'>global</span>","全球的"],
+      ["<span class='en'>marketing manager</span>","市场经理"],
+      ["<span class='en'>modify</span>","修改（比 change 更正式）"],
+      ["<span class='en'>be strict with the deadline</span>","对截止日期要求严格"]
+    ]},
+    { h: "四、场景 ②：咨询团建（team building）", type: "list", items: [
+      "问人数：<span class='en'>How many people are going to join this team building?</span>",
+      "问活动：<span class='en'>What do we do in the team building?</span>（第一天爬长城，第二天参观奥运场馆/博物馆）",
+      "问能否带人：<span class='en'>Can I bring a friend / a relative?</span>（只能带一位 only one）",
+      "问费用：<span class='en'>Does the company pay for the hotel and meals?</span> 公司包酒店和三餐，其他自费 <span class='en'>pay by yourself</span>",
+      "复习包含句型：<span class='en'>Is lunch included?</span>",
+      "问带什么：<span class='en'>What should I bring?</span>",
+      "爽快报名：<span class='en'>I'm in!</span>（算我一个！= Count me in!）"
+    ]},
+    { h: "五、陈述话题（综合训练）", type: "tip", text: "陈述是最综合的输出：要有观点、有逻辑。每个话题先说关键词 1234，抓精彩的讲，别流水账；记得用 if / although / when 点缀。" },
+    { h: "话题 1：What would the perfect weekend look like?", type: "list", items: [
+      "万能句式：<span class='en'>What would your perfect weekend / dream job / ideal trip look like?</span>（look like = 是什么样子）",
+      "要点示范：早起做早餐 → 窗边喝茶听音乐 → 和朋友去市场买食材 → 健身（偶像施瓦辛格激励我变强）→ 晚上和朋友小酌。",
+      "升级方向：先给定义（有钱有闲、做想做的事、不被人打扰），再挑 2~3 个亮点展开，比按时间流水账强得多。"
+    ]},
+    { h: "话题 2：一个让你放松的地方", type: "list", items: [
+      "问法：<span class='en'>Is there a place you like to go when you want to relax?</span>",
+      "参考思路：以前是安静的酒吧（黑啤+乡村音乐）；现在是家附近人少的路——<span class='en'>I walk alone on a quiet road near my home. When I walk, a lot of ideas come to me.</span>"
+    ]},
+    { h: "话题 3：计划赶不上变化的一次经历", type: "list", items: [
+      "问法：<span class='en'>Tell me about one time when things didn't go as planned.</span>（as planned = 按计划）",
+      "参考故事：想去市场买肉和蔬菜做两三道菜，结果买了水果后饿了，顺手买了速食吃，回家发现没买蔬菜没买肉。",
+      "追问：<span class='en'>What would you do differently next time?</span> 下次会早点去（人少）、开车去（装得多、回来快）。",
+      "完整示范：<span class='en'>Tonight I planned to cook two or three meals, so I went to the market to buy meat and vegetables. But when I bought the fruit, I felt hungry. You know, if you feel hungry, you can't think — you just want to eat. So I bought some easy food and ate it there. In the end I went home with only fruit, no vegetables, no meat. Next time I will go earlier when there are fewer people, and I will drive my car so I can carry more food home quickly.</span>"
+    ]},
+    { h: "六、黄金表达 & 举一反三", type: "table", head: ["表达","先吃透","举一反三（迁移）"], rows: [
+      ["<span class='en'>submit / hand in</span>","提交","hand the report to the manager 把报告交给经理；hand in homework 交作业"],
+      ["<span class='en'>database</span>","数据库","合成词：data 数据 + base 基地 → 同类：bedroom（bed+room）"],
+      ["<span class='en'>domestic ↔ global</span>","国内的 ↔ 全球的","串记：abroad（第十六课）→ domestic 国内 ↔ global/international 国际"],
+      ["<span class='en'>handle</span>","处理；搞定","The company will handle it. 公司会搞定 ↔ deal with 处理（同义）"],
+      ["<span class='en'>What would... look like?</span>","……会是什么样子？","What would your dream job look like? / What would the perfect trip look like?"],
+      ["<span class='en'>go as planned</span>","按计划进行","Nothing went as planned. 一切都没按计划来 → go well 进展顺利"],
+      ["<span class='en'>I'm in!</span>","算我一个！（爽快答应）","Count me in! 带上我！↔ I'm out. 我不去了。"],
+      ["<span class='en'>differently</span>","adv. 不同地","词链：different adj. → difference n. → differently adv."],
+      ["<span class='en'>be strict with</span>","对……严格","be strict with the deadline 对截止日严格 → be strict with yourself 自律"],
+      ["<span class='en'>Is lunch included?</span>","含午餐吗？","换词即用：Is breakfast / dinner / the ticket / the guide service included?"]
+    ]},
+    { h: "七、课程安排", type: "tip", text: "周六课调整到<b>周日早上 11:00–12:00</b>。接下来两节课继续全英对话模式：疑问句练提问，陈述练观点+逻辑，都需要单词量支撑——不背单词的打卡别停。" },
+    { h: "课后作业", type: "homework", text: "① 把三个陈述话题各准备一版 1 分钟版本：完美周末（先定义再亮点）、放松的地方、计划赶不上变化（+下次怎么做）；② 职场问句和团建问句各读熟，下节课全英对话直接用；③ 「不背单词」继续每天打卡；④ 周日 11:00 上课。" }
+  ]
+},
+{
   id: 18,
   date: "2026-10-20",
   title: "第十八课：2分钟演讲 ·《教父》影评 · AI 取代工作话题",
@@ -1103,7 +1175,17 @@ const WORDS = [
   { w:"probably", p:"/ˈprɒbəbli/", m:"adv. 大概率", e:"Probably you will lose your job." },
   { w:"business", p:"/ˈbɪznəs/", m:"n. 生意；商业", e:"My friends started their business by themselves." },
   { w:"successful", p:"/səkˈsesfl/", m:"adj. 成功的", e:"The answer will show up when they become successful." },
-  { w:"show up", p:"/ʃəʊ ʌp/", m:"v. 出现（口语）", e:"The answer will show up." }
+  { w:"show up", p:"/ʃəʊ ʌp/", m:"v. 出现（口语）", e:"The answer will show up." },
+  { w:"report", p:"/rɪˈpɔːt/", m:"n. 报告", e:"Prepare a business report." },
+  { w:"marketing", p:"/ˈmɑːkɪtɪŋ/", m:"n. 市场营销", e:"This report is for marketing." },
+  { w:"database", p:"/ˈdeɪtəbeɪs/", m:"n. 数据库", e:"You can find data in our database." },
+  { w:"submit", p:"/səbˈmɪt/", m:"v. 提交", e:"Who should I submit this report to?" },
+  { w:"domestic", p:"/dəˈmestɪk/", m:"adj. 国内的", e:"Domestic information or global information?" },
+  { w:"global", p:"/ˈɡləʊbl/", m:"adj. 全球的", e:"We don't need global information." },
+  { w:"team building", p:"/tiːm ˈbɪldɪŋ/", m:"n. 团建", e:"Do you want to join the team building?" },
+  { w:"handle", p:"/ˈhændl/", m:"v. 处理；搞定", e:"The company will handle it." },
+  { w:"differently", p:"/ˈdɪfrəntli/", m:"adv. 不同地", e:"What would you do differently next time?" },
+  { w:"weekend", p:"/ˌwiːkˈend/", m:"n. 周末", e:"What would the perfect weekend look like?" }
 ];
 
 /* ================= 语音引擎（女声优先） ================= */
