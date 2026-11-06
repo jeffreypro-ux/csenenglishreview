@@ -23,7 +23,9 @@
   h1{font-size:28px;letter-spacing:1px;}
   .sub{color:var(--sub);margin-top:6px;font-size:14px;padding-bottom:20px;}
 
-  .tabs{display:flex;gap:8px;}
+  .tabs{display:flex;gap:8px;align-items:flex-end;}
+  .replay{margin-left:auto;background:var(--accent);color:#fff;padding:10px 22px;border-radius:12px 12px 0 0;font-size:14px;font-weight:600;text-decoration:none;}
+  .replay:hover{background:#a94e2f;text-decoration:none;}
   .tab{padding:10px 22px;border:none;background:transparent;font-size:15px;
     color:var(--sub);cursor:pointer;border-radius:12px 12px 0 0;font-weight:600;}
   .tab.active{background:var(--bg);color:var(--accent);}
@@ -121,6 +123,7 @@
     <nav class="tabs">
       <button class="tab active" id="tab-lessons" onclick="switchTab('lessons')">📒 课程笔记</button>
       <button class="tab" id="tab-words" onclick="switchTab('words')">🃏 单词卡</button>
+      <a class="replay" href="https://my.feishu.cn/drive/folder/Hb46fyWAYlUDo5dUx3DcvkQMnKi?from=space_personal_filelist" target="_blank">🎬 课程回放</a>
     </nav>
   </div>
 </header>
@@ -201,6 +204,67 @@
               dialog 对话 / tip 老师提醒 / homework 作业
    ============================================================ */
 const LESSONS = [
+{
+  id: 22,
+  date: "2026-11-05",
+  title: "第二十二课：全英对话 · 制定计划（方向感 & 计划赶不上变化）",
+  subtitle: "Mike 老师 · 口语实战（全英文）",
+  intro: "课前聊面试没回音、明天再战，以及和十年老友的聚餐（家家有本难念的经）；全英对话两个话题：①制定计划重要吗（长期计划 vs 短期计划、方向感）②为什么有人讨厌做计划（目标缺失+计划赶不上变化→挫败放弃）；还剩最后两节课。",
+  sections: [
+    { h: "一、课前交流", type: "list", items: [
+      "上次面试没回音：<span class='en'>They didn't call me.</span> 明天下午再面一家（课程顾问），心态放平：<span class='en'>I'm taking it easy now.</span>（比较佛系）",
+      "周二和十年老友聚餐（贵州菜）：半年没见，刚见面有点 strange，半小时后就放松了——<span class='en'>We need time to relax and adjust.</span>",
+      "成语表达：家家有本难念的经 → <span class='en'>Every family has its own troubles.</span>（不能直译，用自己意思翻）",
+      "从朋友身上学到：她很独立、去过很多地方生活——<span class='en'>I need to learn to be strong like her.</span>"
+    ]},
+    { h: "二、话题 ①：Do you think it's important to make a plan?", type: "tip", text: "先直接回答重要，再展开逻辑：做不了长期计划→先做短期计划→有方向感→减少迷茫→更可能成功→自己的例子（完成短期计划就离长期目标更近，一路不断调整）。" },
+    { h: "计划话题 · 核心表达", type: "table", head: ["表达","中文","例句"], rows: [
+      ["<span class='en'>make a (long/short) plan</span>","制定（长期/短期）计划","I didn't make a long plan, but I can make short plans."],
+      ["<span class='en'>sense of direction</span>","方向感","You will have a sense of direction."],
+      ["<span class='en'>get lost</span>","迷路（双关：偏离方向）","You will not get lost when you do something."],
+      ["<span class='en'>reduce</span>","v. 减少","It can reduce confusion."],
+      ["<span class='en'>confusion</span>","n. 迷茫","Reduce confusion in your life."],
+      ["<span class='en'>be more likely to succeed</span>","更有可能成功","You are more likely to succeed."],
+      ["<span class='en'>finish it（连读）</span>","完成它","When I finish it, I will get closer to my long-term plan."],
+      ["<span class='en'>get closer to</span>","离……更近","I will get closer to my long-term plan."],
+      ["<span class='en'>keep adjusting my plans</span>","不断调整计划（keep + doing）","I always keep adjusting my plans."],
+      ["<span class='en'>along the way</span>","一路上；在此过程中","Keep adjusting my plans along the way."]
+    ]},
+    { h: "计划话题范文", type: "list", items: [
+      "<span class='en'>I think making plans is very important for me. If you can't make a long-term plan, you can make a short plan first. Actually, you will have a sense of direction, and you will not get lost when you do something. So it can reduce confusion, and you are more likely to succeed. It's like me: I have a short plan, and when I finish it, I will get closer to my long-term plan. But I always keep adjusting my plans along the way.</span>"
+    ]},
+    { h: "三、话题 ②：Why do some people hate making plans?", type: "tip", text: "两个原因：①不知道自己的目标是什么→何来的计划？（地道说法 Where is the plan?）②计划赶不上变化→事情不按计划走→挫败→放弃。" },
+    { h: "原因话题 · 核心表达", type: "table", head: ["表达","中文","例句"], rows: [
+      ["<span class='en'>They didn't know what goal they want.</span>","他们不知道自己想要什么目标（宾语从句）","Because they didn't know what goal they want, so where is the plan?"],
+      ["<span class='en'>Where is the plan?</span>","何来的计划？（地道转弯表达）","So where is the plan?"],
+      ["<span class='en'>Things change faster than you expect.</span>","事情比你预期变化更快（= 计划赶不上变化）","Things change faster than you expect."],
+      ["<span class='en'>Things don't go as planned.</span>","事情不按计划走","When things don't go as planned..."],
+      ["<span class='en'>work out</span>","完成；实现","A lot of things can't work out."],
+      ["<span class='en'>be disappointed / frustrated</span>","感到失望/挫败","You will be disappointed and give up."],
+      ["<span class='en'>give up</span>","放弃（半途而废）","They probably feel frustrated and give up."],
+      ["<span class='en'>come true</span>","（梦想）实现","A lot of plans can't come true."]
+    ]},
+    { h: "原因话题范文", type: "list", items: [
+      "<span class='en'>I think some people find it hard to make plans, and there are two reasons. The first one is that they don't know how to make a plan, because they didn't know what goal they want — so where is the plan? The second one is that things change faster than you expect, so a lot of things don't go as planned. When things don't go as planned, they probably feel disappointed and give up.</span>"
+    ]},
+    { h: "四、难点举一反三", type: "table", head: ["难点","先吃透","举一反三（迁移）"], rows: [
+      ["<span class='en'>sense of direction</span>","方向感","sense of + n.：sense of humor 幽默感 / a sense of safety 安全感"],
+      ["<span class='en'>reduce</span>","v. 减少","↔ increase 增加（第九课数据表达串记）；reduction n."],
+      ["<span class='en'>be likely to do</span>","很可能做","You are more likely to succeed. / It is likely to rain. 可能要下雨"],
+      ["<span class='en'>along the way</span>","一路上","I learned a lot along the way. 一路学了很多"],
+      ["<span class='en'>Where is the plan?</span>","何来的计划？","地道转弯表达：So where is the money? 钱在哪呢？"],
+      ["<span class='en'>Things change faster than you expect.</span>","计划赶不上变化（意译）","比较级 + than you expect 比你预期的更……：faster/easier/better than you expect"],
+      ["<span class='en'>go as planned</span>","按计划进行","复习：Nothing went as planned.（第十九课）→ things don't work out 行不通"],
+      ["<span class='en'>disappointed / frustrated</span>","失望的/挫败的（形容人）","ed 形容人 ↔ ing 形容事：a disappointing plan"],
+      ["<span class='en'>give up</span>","放弃","up 短语族复习：give up / calm down / cheer up / grow up（第十七课）"],
+      ["<span class='en'>goal</span>","n. 目标","≈ dream / target；achieve/reach a goal 实现目标"],
+      ["<span class='en'>its own</span>","它自己的（its）","every family has its own troubles ↔ It's its own problem.（its 物主代词）"],
+      ["<span class='en'>Every family has its own troubles.</span>","家家有本难念的经","同类谚语意译：直译行不通时，用自己的话翻意思"]
+    ]},
+    { h: "五、老师点评与安排", type: "tip", text: "边聊边学，聊出深度了；不懂的生词在语境中慢慢形成记忆。要求：每天保持接触英语，不要只在上课那天学——前面背的文章和单词是底子，别放凉了。还剩最后两节课，周二上课。祝面试成功！" },
+    { h: "课后作业", type: "homework", text: "① 两个话题练熟脱稿：制定计划的重要性（sense of direction 一条线）、为什么有人讨厌做计划（Where is the plan? + things change faster than you expect）；② 把「计划赶不上变化」用两种说法各造一句（things change faster than you expect / things don't go as planned）；③ 每天雷打不动碰英语（单词+朗读）；④ 周二上课。" }
+  ]
+},
 {
   id: 21,
   date: "2026-10-29",
@@ -1349,7 +1413,19 @@ const WORDS = [
   { w:"develop", p:"/dɪˈveləp/", m:"v. 发展", e:"Our relationship has developed into a close friendship." },
   { w:"anyway", p:"/ˈeniweɪ/", m:"adv. 总之", e:"Anyway, these two points are important." },
   { w:"close", p:"/kləʊz/", m:"adj. 亲密的", e:"a close friendship 亲密的友谊" },
-  { w:"tourist", p:"/ˈtʊərɪst/", m:"n. 旅客；游客", e:"A colleague is like a tourist in our life." }
+  { w:"tourist", p:"/ˈtʊərɪst/", m:"n. 旅客；游客", e:"A colleague is like a tourist in our life." },
+  { w:"goal", p:"/ɡəʊl/", m:"n. 目标", e:"They didn't know what goal they want." },
+  { w:"direction", p:"/dəˈrekʃn/", m:"n. 方向", e:"a sense of direction 方向感" },
+  { w:"confusion", p:"/kənˈfjuːʒn/", m:"n. 迷茫", e:"It can reduce confusion." },
+  { w:"reduce", p:"/rɪˈdjuːs/", m:"v. 减少", e:"Reduce confusion and stress." },
+  { w:"likely", p:"/ˈlaɪkli/", m:"adj. 可能的", e:"You are more likely to succeed." },
+  { w:"adjust", p:"/əˈdʒʌst/", m:"v. 调整", e:"Keep adjusting my plans along the way." },
+  { w:"expect", p:"/ɪkˈspekt/", m:"v. 预期", e:"Things change faster than you expect." },
+  { w:"disappointed", p:"/ˌdɪsəˈpɔɪntɪd/", m:"adj. 失望的", e:"They feel disappointed and give up." },
+  { w:"frustrated", p:"/frʌˈstreɪtɪd/", m:"adj. 挫败的", e:"You will be frustrated." },
+  { w:"give up", p:"/ɡɪv ʌp/", m:"v. 放弃", e:"Don't give up your plan." },
+  { w:"trouble", p:"/ˈtrʌbl/", m:"n. 麻烦", e:"Every family has its own troubles." },
+  { w:"own", p:"/əʊn/", m:"adj. 自己的", e:"its own troubles 它自己的麻烦" }
 ];
 
 /* ================= 语音引擎（女声优先） ================= */
