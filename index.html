@@ -108,6 +108,48 @@
   pre{background:#2b2620;color:#f0ead9;padding:16px;border-radius:12px;font-size:12.5px;overflow:auto;line-height:1.6;margin:12px 0;}
   .voice-status{font-size:12px;color:var(--sub);margin-top:6px;}
 
+  .essay-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:14px;box-shadow:var(--shadow)}
+  .essay-card .e-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .essay-card .e-lesson{font-size:11px;background:var(--accent-soft);color:var(--accent);padding:2px 10px;border-radius:99px;font-weight:700;flex:none}
+  .essay-card h3{font-size:16px;flex:1;min-width:150px}
+  .play-btn{border:none;background:var(--accent);color:#fff;padding:6px 16px;border-radius:99px;font-size:13px;cursor:pointer;flex:none}
+  .play-btn:hover{background:#a94e2f}
+  .play-btn.on{background:var(--ink)}
+  .essay-text{font-size:14px;color:#3c4c5a;line-height:1.9;background:#fbf9f5;border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+
+  /* ===== 移动端适配 ===== */
+  @media(max-width:640px){
+    h1{font-size:21px}
+    .sub{font-size:12.5px;padding-bottom:14px}
+    .wrap{padding:0 12px}
+    .tabs{flex-wrap:wrap;gap:6px}
+    .tab{padding:9px 13px;font-size:13px}
+    .replay{padding:9px 14px;font-size:12.5px;border-radius:10px;margin-left:0}
+    .toolbar{margin:16px 0 12px;gap:8px}
+    .btn{padding:9px 14px;font-size:12px}
+    .search{padding:10px 14px;font-size:13px}
+    .lesson-card{padding:14px;gap:12px}
+    .num{width:42px;height:42px;font-size:16px;border-radius:12px}
+    .card-title{font-size:15px}
+    .card-meta{font-size:12px}
+    .detail{padding:22px 14px;border-radius:12px}
+    .d-title{font-size:19px}
+    .d-section h3{font-size:14.5px}
+    .d-section li{font-size:13.5px}
+    table{font-size:12.5px}
+    th,td{padding:6px 8px}
+    .tip,.homework,.dialog{font-size:13px;padding:12px 14px}
+    .cards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+    .flip{height:155px}
+    .word{font-size:19px}
+    .essay-card{padding:14px}
+    .essay-card h3{font-size:14.5px}
+    .essay-text{font-size:13px;padding:10px 12px;line-height:1.8}
+    .modal{padding:20px 16px;border-radius:14px}
+    .modal h2{font-size:16px}
+    .pager{gap:8px}
+    .pager a{padding:11px;font-size:13px}
+  }
   footer{color:var(--sub);font-size:12px;text-align:center;padding:26px 0 40px;}
   @media(max-width:640px){.detail{padding:24px 20px;}h1{font-size:23px;}}
 </style>
@@ -123,6 +165,7 @@
     <nav class="tabs">
       <button class="tab active" id="tab-lessons" onclick="switchTab('lessons')">📒 课程笔记</button>
       <button class="tab" id="tab-words" onclick="switchTab('words')">🃏 单词卡</button>
+      <button class="tab" id="tab-essays" onclick="switchTab('essays')">📄 范文中心</button>
       <a class="replay" href="https://my.feishu.cn/drive/folder/Hb46fyWAYlUDo5dUx3DcvkQMnKi?from=space_personal_filelist" target="_blank">🎬 课程回放</a>
     </nav>
   </div>
@@ -148,6 +191,14 @@
       <button class="btn ghost" onclick="openVoiceSettings()">⚙ 声音设置</button>
     </div>
     <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="page-essays" style="display:none">
+    <div class="toolbar">
+      <span style="font-size:13px;color:var(--sub)">28 篇课堂范文 · 点 ▶ 播放整篇听力</span>
+      <button class="btn ghost" onclick="openVoiceSettings()">⚙ 声音设置</button>
+    </div>
+    <div id="essays-list"></div>
   </section>
 </main>
 
@@ -204,6 +255,66 @@
               dialog 对话 / tip 老师提醒 / homework 作业
    ============================================================ */
 const LESSONS = [
+{
+  id: 27,
+  date: "2026-11-24",
+  title: "第二十七课：描述人物实战 · 时事人物 & 朋友 & 最敬佩的人",
+  subtitle: "Mike 老师 · 口语实战（全英文）",
+  intro: "课前分享：备战明年五月的期货考试、工作稳定每天读金融书；先复习（网站后台数据提醒要每天看笔记）；新内容——描述人物专题：用五官框架描述朋友 Tom、评价特朗普和黄仁勋、讲哥哥生病做饭的故事。",
+  sections: [
+    { h: "一、课前交流", type: "list", items: [
+      "每天学金融，明年五月考<span class='en'>futures examination</span>（期货考试）——老师提醒：要 make a plan！",
+      "工作稳定（监控室），已读完一本，现在读<span class='en'>financial psychology</span>（金融心理学）。",
+      "老师看了复习网站后台数据：访问量不高——<b>笔记要每天看</b>，不然上一节忘一节。"
+    ]},
+    { h: "二、复习环节（朗读两遍及格）", type: "tip", text: "炸鸡店演讲 + Part 1 三问 + 回到 18 岁范文各读两遍——朗读练的是口腔肌肉记忆，一天抽时间读一遍，语感不退。" },
+    { h: "三、描述人物方法论（本课核心框架）", type: "tip", text: "问 What are they like?（他是什么样的人？）时，按<b>五官框架</b>走：① 外观——头发、眼睛、鼻子、皮肤、穿着（用眼睛看）② 举止声音——说话大小声、表情、动作 ③ 感受——和他相处你的心情。外观让听的人有画面感，故事让描述有深度。" },
+    { h: "话题 ①：评价时事人物", type: "list", items: [
+      "特朗普：<span class='en'>Everything he talks has an impact on the world.</span>（他说的一切都会影响全世界）——总出人意料 <span class='en'>gives me some surprises</span>；本质是商人用 business mind 做 political things；a nice person。",
+      "黄仁勋：<span class='en'>a successful businessman</span>；创业三十多年，他的公司对美国经济甚至全世界都很重要。",
+      "评价人物句式：<span class='en'>I think he is... / In my opinion... / He is a ... person.</span>"
+    ]},
+    { h: "话题 ②：喜欢和谁待在一起（朋友 Tom）", type: "list", items: [
+      "观点：<span class='en'>I enjoy spending time with my friend Tom.</span>",
+      "品质：知识渊博 <span class='en'>he has a lot of knowledge</span>；友好；从不大声说话 <span class='en'>never speaks loud</span>；情绪平和 <span class='en'>a peaceful emotion</span>。",
+      "外观细节：黑头发、大眼睛、总是爱笑、表情夸张、小嘴巴、大耳朵——<span class='en'>When he smiles, I feel so happy.</span>",
+      "感受收尾：<span class='en'>I stay with him, I feel peace in my mind and I always learn a lot.</span>"
+    ]},
+    { h: "话题 ③：最敬佩的人（哥哥）", type: "list", items: [
+      "外观：大块肌肉 <span class='en'>a lot of muscles</span>（总踢球晒得黑黑的皮肤）、大鼻子、大嘴巴。",
+      "核心故事（反差出深度）：去年夏天我生病在家，哥哥踢完球赛后<b>来我家给我做饭、买药</b>——<span class='en'>When I had a cold, he came to my home and cooked for me.</span>",
+      "缺点（不想复制的）：不听妈妈话、有自己的主意、不吃早饭、学习不好（踢球弃考英语）。",
+      "升华：<span class='en'>I have learned from my brother: keep my hobby and keep my body healthy. I need to learn more knowledge for my family.</span>",
+      "结尾加副词：<span class='en'>Honestly / Actually, I think he is a good person, especially because he is very good at cooking.</span>"
+    ]},
+    { h: "描述人物 · 外观词汇速查", type: "table", head: ["表达","中文"], rows: [
+      ["<span class='en'>What are they like?</span>","他是什么样的人？"],
+      ["<span class='en'>appearance</span>","n. 外观；外貌"],
+      ["<span class='en'>black hair / big eyes / big ears / small mouth / big nose</span>","黑头发/大眼睛/大耳朵/小嘴巴/大鼻子"],
+      ["<span class='en'>muscles</span>","n. 肌肉"],
+      ["<span class='en'>skin</span>","n. 皮肤（dark skin 晒黑的皮肤）"],
+      ["<span class='en'>facial expression</span>","面部表情（表情夸张 exaggerated）"],
+      ["<span class='en'>wear a black T-shirt</span>","穿一件黑 T 恤"],
+      ["<span class='en'>speak loud</span>","大声说话"],
+      ["<span class='en'>care about me</span>","关心我"],
+      ["<span class='en'>be good at cooking</span>","擅长做饭"]
+    ]},
+    { h: "四、难点举一反三", type: "table", head: ["难点","先吃透","举一反三（迁移）"], rows: [
+      ["<span class='en'>have an impact on</span>","对……有影响","≈ affect v.；His words have a big impact on me. 他的话对我影响很大"],
+      ["<span class='en'>peaceful / peace</span>","平和的 / 平静","peace n. → peaceful adj.；feel peace in my mind"],
+      ["<span class='en'>emotion</span>","n. 情绪","emotional adj. 情绪化的；control your emotions 控制情绪"],
+      ["<span class='en'>in my opinion</span>","在我看来","≈ I think... / I believe...（口语三剑客）"],
+      ["<span class='en'>wouldn't want to copy</span>","不想复制（缺点）","His habits are what I wouldn't want to copy. 他的习惯是我不想要的"],
+      ["<span class='en'>spend time with sb</span>","和某人共度时光","I enjoy spending time with Tom. ↔ 第21课 the more we talk..."],
+      ["<span class='en'>be good at + doing</span>","擅长做","be good at cooking / swimming / English"],
+      ["<span class='en'>What are they like?</span>","某人什么样（问性格外貌）","↔ What do they look like? 只问外貌"],
+      ["<span class='en'>形容人公式</span>","观点+外观+故事+感受","串记演讲三段式：开头-过程-感受结尾"],
+      ["<span class='en'>make a plan（复现）</span>","做计划","期货考试要做计划——第22课方法直接复用"]
+    ]},
+    { h: "五、老师点评与约定", type: "tip", text: "你已经能说出内容，缺的是流利和框架——描述人有了五官框架就知道从哪说起。重要约定：每天固定 1 小时学英语（下午 4–5 点），老师上午发提醒、下班前检查，学生每天反馈。别害怕说英语，先把简单的说明白就是胜利。" },
+    { h: "课后作业", type: "homework", text: "① 用五官框架描述一个你身边亲近的人（外观+一个小故事+你的感受+一个缺点），1 分钟；② 复习网站上把第 20–23 课的范文每天读一篇；③ 每天下午 4–5 点英语学习打卡并反馈；④ 期货考试开始做一个 long-term plan（用第 22 课方法）。" }
+  ]
+},
 {
   id: 26,
   date: "2026-11-19",
@@ -1618,7 +1729,17 @@ const WORDS = [
   { w:"agree", p:"/əˈɡriː/", m:"v. 同意", e:"My friend didn't agree with me." },
   { w:"choice", p:"/tʃɔɪs/", m:"n. 选择", e:"You need to make a choice." },
   { w:"opinion", p:"/əˈpɪnjən/", m:"n. 意见", e:"We have different opinions." },
-  { w:"achieve", p:"/əˈtʃiːv/", m:"v. 实现；达成", e:"Achieve your goals by sticking to plans." }
+  { w:"achieve", p:"/əˈtʃiːv/", m:"v. 实现；达成", e:"Achieve your goals by sticking to plans." },
+  { w:"impact", p:"/ˈɪmpækt/", m:"n. 影响", e:"Everything he talks has an impact on the world." },
+  { w:"peaceful", p:"/ˈpiːsfl/", m:"adj. 平和的", e:"He has a peaceful emotion." },
+  { w:"emotion", p:"/ɪˈməʊʃn/", m:"n. 情绪", e:"Control your emotions." },
+  { w:"muscle", p:"/ˈmʌsl/", m:"n. 肌肉", e:"He has a lot of muscles." },
+  { w:"skin", p:"/skɪn/", m:"n. 皮肤", e:"His skin is dark from the sun." },
+  { w:"appearance", p:"/əˈpɪərəns/", m:"n. 外观", e:"What are they like? Describe their appearance." },
+  { w:"opinion", p:"/əˈpɪnjən/", m:"n. 观点", e:"What's your opinion about him?" },
+  { w:"personality", p:"/ˌpɜːsəˈnæləti/", m:"n. 性格", e:"He has a nice personality." },
+  { w:"describe", p:"/dɪˈskraɪb/", m:"v. 描述", e:"How to describe people." },
+  { w:"careful", p:"/ˈkeəfl/", m:"adj. 细心的", e:"He does things carefully." }
 ];
 
 /* ================= 语音引擎（女声优先） ================= */
@@ -1699,6 +1820,77 @@ function openVoiceSettings(){
   const r = localStorage.getItem('csen_rate');
   if(r){ document.getElementById('rate').value = r; document.getElementById('rateVal').textContent = r; }
 })();
+
+
+/* ============================================================
+   ★ 范文中心数据 ★ 课堂所有范文汇总
+   ============================================================ */
+const ESSAYS = [
+  { lesson: "第 9 课", title: "iPhone 广告词看后复述", text: "When I watched this video, I feel this phone has a lot of advanced technology. It can take a lot of different pictures, but I don't know how much the phone costs. So if the phone has a great price, I want to buy it." },
+  { lesson: "第 9 课", title: "婚礼经历复述（一正一反）", text: "Last week I went to my friend's wedding in Kunming, and I was so excited. I was drunk at the wedding, because I drank a lot of baijiu at the same table. After the party, I talked a lot with the bride's father. He really likes me, so he wants to invite me to play next month. But I'm a bit upset, because I heard a friend wanted to pay only 200 yuan. I think our friendship is breaking." },
+  { lesson: "第 10 课", title: "峨眉山口语段落", text: "Hello Mike. Today I want to talk about Mount Emei. Mount Emei is located in Sichuan Province. It's a famous Buddhist mountain in China, and also a place that a lot of people come to play on the weekend. There are a lot of monkeys on the mountain. When the number of tourists increases, the order will go down. So the scenic area needs to move up control, and part of the visit times. In recent years, the number of tourists has increased by 10%. But if you get up early, you still can see the quiet sunrise above the clouds. This is Mount Emei that I remember. Thank you." },
+  { lesson: "第 11 课", title: "课前完整表达：我长胖了", text: "Hello Mike. Recently I got weight, because I eat too much and I had fast food with too much oil and salt. So they make me fat. Well, at night I did it again. I had three pieces of bread. After that, I want to lose weight. So Mike, do you think I can lose my weight?" },
+  { lesson: "第 11 课", title: "四句话框架 · 我的一天", text: "Today I feel uncomfortable. I slept all day and didn't learn anything. It made me a bit upset because I didn't study English. After that, I want to study more English next week." },
+  { lesson: "第 11 课", title: "四句话框架 · 午餐吃了什么", text: "For my lunch, I had take-away. I ate tomato and egg. It was plain because I can't cook by myself. Next time I want to eat a delicious lunch cooked by myself." },
+  { lesson: "第 11 课", title: "四句话框架 · 爱好", text: "In my free time, I always play basketball. I usually play basketball on Friday at school. It makes me excited because I have a basketball team. This weekend I want to play tennis because I want to try a new one." },
+  { lesson: "第 11 课", title: "四句话框架 · 城市生活（成都）", text: "I live in Chengdu. I usually eat hot pot with my friends. The good thing is the hot pot is delicious, but the bad thing is it's a bit spicy. I prefer to eat hot pot and drink tea because Chengdu is a peaceful city. If I have more time, I want to learn how to play Mahjong." },
+  { lesson: "第 15 课", title: "范文 A：一个有用的网站", text: "Today I will describe a useful website I often visit. This website has a lot of documentaries. Last summer, my sister and I often watched food documentaries because my sister didn't go to a good college. It made her upset, so we watched a lot of food documentaries to relax. We also learned a lot of kitchen skills, and I still use these skills until now. So I think this website is very useful." },
+  { lesson: "第 15 课", title: "范文 B：一段享受过的旅程（大理）", text: "Today I want to describe a trip I enjoyed. Two years ago, I went to Dali by myself. At that time, I just broke up and my work was very tiring, so I wanted to go on a trip to relax. Dali has fresh air and beautiful views, and delicious local food. But the local dishes are large in size, so I couldn't finish them all. This trip made me feel relaxed and meaningful." },
+  { lesson: "第 16 课", title: "范文 A：为什么我想当导游", text: "Today I will describe why I want to be a tour guide. Three months ago, I had an idea. I want to meet different foreigners and practice my English, so I joined the tour guide exam. But the exam is very difficult. It makes me anxious, so I study hard every day. I hope I will pass the exam in the future." },
+  { lesson: "第 16 课", title: "范文 B：泰山（有深度版）", text: "Today I will describe my favorite Chinese scenic spot. It is Mount Tai, in my hometown. It is very tall, about 1,545 meters. I always climb the mountain with my friends on summer holidays. We always feel tired, but when you get to the top of the mountain, you will see the sunrise and the sea of clouds. It makes you excited and gives you hope in life." },
+  { lesson: "第 17 课", title: "演讲：泰山（升级版，含人生感悟）", text: "Today I will describe my favorite scenic spot. My favorite scenic spot is Mount Tai. Do you like climbing the mountain? I like it because it makes me strong. When I was a child, I always climbed the mountain with my friends on summer holidays. Mount Tai is very tall, about 1,545 meters. If you climb the mountain, you will be very tired. But when you get to the top of the mountain, you will see the sunrise and the sea of clouds. Although climbing is tiring, it makes me excited and relaxed. Climbing a mountain is like your real life: when you feel tired, you are going up, and it means you are improving. So my favorite scenic spot is Mount Tai." },
+  { lesson: "第 17 课", title: "演讲：导游考试的挑战", text: "After one month, I will take the tour guide exam. This exam has a lot of challenges for me. There are two parts. The first one is the exam itself. It has a lot of things to memorize, like tour guide scripts and listening. When I memorize, I always forget, so I feel a lot of pressure. But I will calm down and keep preparing. I believe I can succeed. The second part is my career development. If I don't pass the exam, I will keep learning English and think about other jobs. But if I have opportunities, I want to have a part-time tour guide job. Totally speaking, the whole year's reward is meaningful for me. This is definitely a good choice. I will still keep learning in the future." },
+  { lesson: "第 18 课", title: "《教父》影评", text: "Today I will describe a movie that made me think a lot. I think this movie is The Godfather. Although not everyone prefers it, I think it is a famous movie. When I watched the movie for the first time, my friends asked me: if you became the Godfather, what would you do? I said I would just play every day, because I would have money, people, everything — that's exactly what I want. But when I watched the movie for the second time, I saw it differently. I realized that when a boy becomes a man, he will meet a lot of troubles and needs to overcome them. So this movie made me learn a lot in my life." },
+  { lesson: "第 18 课", title: "AI 会取代我们的工作吗", text: "Everybody asks me: will AI take my job? My answer is yes. If you are a customer service, you will probably lose your job, because these jobs will be replaced by AI. A few years ago, AI only took some easy jobs, but now it has advanced development. Although AI has replaced many jobs, a lot of my friends started their own business by themselves. I need to find a job that doesn't include AI. I think the answer will show up when they become successful or not." },
+  { lesson: "第 19 课", title: "计划赶不上变化（完整示范）", text: "Tonight I planned to cook two or three meals, so I went to the market to buy meat and vegetables. But when I bought the fruit, I felt hungry. You know, if you feel hungry, you can't think — you just want to eat. So I bought some easy food and ate it there. In the end I went home with only fruit, no vegetables, no meat. Next time I will go earlier when there are fewer people, and I will drive my car so I can carry more food home quickly." },
+  { lesson: "第 20 课", title: "好生活是什么样子", text: "If you ask me what a good life is, I will say I want to be a trader. What I think about a good life is that I can have so much time that I can do anything I want. If I become a trader, I only need to work six hours a day, and I will get more money than other jobs. But to become a good trader is very hard — you need to spend a lot of time and effort. I believe I can. So if I want to live this life, I need to make two changes now: first, keep my body healthy; second, keep learning English." },
+  { lesson: "第 20 课", title: "最好的朋友（苗苗完整版）", text: "In my life I have a lot of friends, but Miao Miao is the most important one. I have known her for about fifteen years, and we were classmates. Now she still lives in Chengdu. When I finished college, I needed to find my first job. She went with me. The place was very far, and we walked for a whole day. But with her company, I succeeded in the interview. I think the depth of a friendship is connected to time. I don't expect somebody to help me when I am down, but I am really thankful that she stayed with me. Company is more valuable than help." },
+  { lesson: "第 21 课", title: "友谊的品质", text: "I think there are two key points about best friends. The first one is honesty, because we can't lie between friends — we need to be true. The second one is help: we should help each other as friends, because we will meet a lot of trouble in our life. Anyway, these two points are very important qualities in best friends." },
+  { lesson: "第 21 课", title: "和同事能否做好朋友", text: "I don't think it's a good idea to make close friends with my colleagues, and there are two reasons. The first one is that they might talk something bad behind your back. The second one is that if they have a lot of work, they will probably give you some work that doesn't belong to you. Anyway, I think a colleague is like a tourist in our life — you meet, you walk together for a while, and then you move on." },
+  { lesson: "第 21 课", title: "为什么长久友谊难维持", text: "I think a lot of people don't want to pay something in the friendship, like time and money. I think time is the most important thing in a friendship, because if you want to be friends with somebody, you need to spend time and talk more with him. The more we talk, the deeper our relationship will be." },
+  { lesson: "第 21 课", title: "综合演讲：我的好朋友", text: "In my life I have a lot of friends, but I think Miao Miao is my best friend, because we have known each other for about 15 years and we have met a lot of things together. First, I think the important qualities about best friends are honesty — we can't lie to each other — and help: we always help each other as friends and go through a lot of things. As friends, we never talk bad behind each other. Over these years, the more we talk, the deeper our relationship is. Yeah, this is my best friend story." },
+  { lesson: "第 22 课", title: "制定计划的重要性", text: "I think making plans is very important for me. If you can't make a long-term plan, you can make a short plan first. Actually, you will have a sense of direction, and you will not get lost when you do something. So it can reduce confusion, and you are more likely to succeed. It's like me: I have a short plan, and when I finish it, I will get closer to my long-term plan. But I always keep adjusting my plans along the way." },
+  { lesson: "第 22 课", title: "为什么有人讨厌做计划", text: "I think some people find it hard to make plans, and there are two reasons. The first one is that they don't know how to make a plan, because they didn't know what goal they want — so where is the plan? The second one is that things change faster than you expect, so a lot of things don't go as planned. When things don't go as planned, they probably feel disappointed and give up." },
+  { lesson: "第 23 课", title: "回到 18 岁（精华版）", text: "If I could go back to 18, I would tell myself a few things. First, time is more valuable than money. When we are young, we always think we have plenty of time, but every year passes quickly, so we shouldn't waste time on meaningless things — like meaningless dinners or making friends blindly. We should improve ourselves. Second, patience is also important. At 18, I always wanted fast results, but I knew very little back then. To master a skill, we always need time to build it. So make a long-term plan and stick to it, instead of acting on every sudden idea. Third, it's good to have a relationship before 18, and you don't need to be picky. When you get this experience, you will know what to expect later in life, so you are less likely to make mistakes. Finally, every progress comes little by little. Don't be afraid of what the future brings. It's never too late to start." },
+  { lesson: "第 25 课", title: "雅思 Part 2：周五足球计划", text: "I always make plans with my friend Tom. The plan is to play football on Friday afternoon. Every Friday afternoon we have a football match, and when we win the match, we always go to eat hot pot." },
+  { lesson: "第 26 课", title: "炸鸡店计划（最终版）", text: "Last year my friends and I wanted to open a fried chicken shop. Actually, we opened it in May, and before that we prepared everything in advance. Now the shop is open — it's near a school, so a lot of students come here to buy our chicken. Our next plan is to open a branch in another city next year. Honestly, I didn't know I could do this, but I think if you want to do something, you just stick to it. It's fine." }
+];
+
+let essayPlaying = null;
+function renderEssays(){
+  const box = document.getElementById('essays-list');
+  if(!box) return;
+  box.innerHTML = '';
+  ESSAYS.forEach((it, i) => {
+    const d = document.createElement('div');
+    d.className = 'essay-card';
+    d.innerHTML = '<div class="e-head"><span class="e-lesson">'+it.lesson+'</span><h3>'+it.title+'</h3>'+
+      '<button class="play-btn" id="play-'+i+'" onclick="toggleEssay('+i+')">▶ 播放</button></div>'+
+      '<div class="essay-text">'+it.text+'</div>';
+    box.appendChild(d);
+  });
+}
+function toggleEssay(i){
+  const btn = document.getElementById('play-'+i);
+  if(essayPlaying === i){
+    speechSynthesis.cancel(); essayPlaying = null;
+    btn.classList.remove('on'); btn.textContent = '▶ 播放'; return;
+  }
+  if(essayPlaying !== null){
+    const old = document.getElementById('play-'+essayPlaying);
+    if(old){ old.classList.remove('on'); old.textContent = '▶ 播放'; }
+  }
+  if(!('speechSynthesis' in window)){ alert('当前浏览器不支持语音'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(ESSAYS[i].text);
+  const v = getVoice(); if(v) u.voice = v;
+  u.lang = 'en-US';
+  u.rate = parseFloat(localStorage.getItem('csen_rate') || document.getElementById('rate').value || 0.9);
+  essayPlaying = i;
+  btn.classList.add('on'); btn.textContent = '⏸ 停止';
+  u.onend = u.onerror = () => { essayPlaying = null; btn.classList.remove('on'); btn.textContent = '▶ 播放'; };
+  speechSynthesis.speak(u);
+}
 
 /* ================= 页面逻辑 ================= */
 const listEl = document.getElementById('list');
@@ -1817,8 +2009,10 @@ function shuffleWords(){
 function switchTab(tab){
   document.getElementById('tab-lessons').classList.toggle('active', tab==='lessons');
   document.getElementById('tab-words').classList.toggle('active', tab==='words');
+  document.getElementById('tab-essays').classList.toggle('active', tab==='essays');
   document.getElementById('page-lessons').style.display = tab==='lessons' ? '' : 'none';
   document.getElementById('page-words').style.display = tab==='words' ? '' : 'none';
+  document.getElementById('page-essays').style.display = tab==='essays' ? '' : 'none';
   if(tab==='lessons') goBack();
   window.scrollTo({top:0});
 }
@@ -1826,6 +2020,7 @@ function openHelp(){ document.getElementById('mask').classList.add('show'); }
 
 renderList();
 renderWords();
+renderEssays();
 
 /* 支持 #/lesson/9 这样的链接直接打开某节课 */
 (function(){
